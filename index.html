@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaLock v1.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="painel-container">
+        <header>
+            <h2>🔒 PersonaLock v1.0</h2>
+            <p>O seu painel visual de proteção de dados pessoais</p>
+        </header>
+
+        <!-- Botões das Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="abrirAba(event, 'aba-proteger')">Proteger Informação</button>
+            <button class="tab-btn" onclick="abrirAba(event, 'aba-revelar')">Revelar Informação</button>
+        </div>
+
+        <!-- ABA 1: PROTEGER (CRIPTOGRAFAR) -->
+        <div id="aba-proteger" class="tab-content active">
+            <div class="form-group">
+                <label for="drop-tipo-dado">Tipo:</label>
+                <select id="drop-tipo-dado">
+                    <option value="1">Senha</option>
+                    <option value="2">Documento</option>
+                    <option value="3">Anotação</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="txt-dado-proteger">Dado:</label>
+                <input type="text" id="txt-dado-proteger" placeholder="Senha, CPF, texto...">
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="chk-chave-auto" checked>
+                <label for="chk-chave-auto">Gerar chave automática segura</label>
+            </div>
+
+            <div class="form-group">
+                <label for="num-chave-manual">Chave: <span id="valor-slider">3</span></label>
+                <input type="range" id="num-chave-manual" min="1" max="25" value="3" disabled>
+            </div>
+
+            <button class="btn btn-success" onclick="processarProtecao()">🔐 Proteger Dado</button>
+            
+            <div id="out-proteger" class="output-box"></div>
+        </div>
+
+        <!-- ABA 2: REVELAR (DESCRIPTOGRAFAR) -->
+        <div id="aba-revelar" class="tab-content">
+            <div class="form-group">
+                <label for="txt-dado-revelar">Texto Cripto:</label>
+                <input type="text" id="txt-dado-revelar" placeholder="Cole o texto codificado aqui...">
+            </div>
+
+            <div class="form-group">
+                <label for="num-chave-revelar">Chave Usada:</label>
+                <input type="number" id="num-chave-revelar" value="0" min="0" max="25">
+            </div>
+
+            <button class="btn btn-primary" onclick="processarRevelacao()">🔓 Revelar Dado</button>
+
+            <div id="out-revelar" class="output-box"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F3F4F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.painel-container {
+    width: 450px;
+    background-color: #FAFAFA;
+    border: 1px solid #E5E7EB;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+header h2 {
+    text-align: center;
+    color: #4F46E5;
+    margin: 0 0 5px 0;
+}
+
+header p {
+    text-align: center;
+    color: #6B7280;
+    font-size: 14px;
+    margin: 0 0 20px 0;
+}
+
+/* Estilo das Abas */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #D1D5DB;
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: #E5E7EB;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #374151;
+    border-radius: 5px 5px 0 0;
+    margin-right: 2px;
+}
+
+.tab-btn.active {
+    background: #FFFFFF;
+    color: #4F46E5;
+    border: 1px solid #D1D5DB;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Formulários e Inputs */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: normal;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+/* Botões */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.btn-success {
+    background-color: #10B981;
+}
+
+.btn-success:hover {
+    background-color: #059669;
+}
+
+.btn-primary {
+    background-color: #3B82F6;
+}
+
+.btn-primary:hover {
+    background-color: #2563EB;
+}
+
+/* Caixas de Resultado */
+.output-box {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.alerta-erro {
+    color: #DC2626;
+    font-weight: bold;
+}
+
+.card-sucesso {
+    background-color: #ECFDF5;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #10B981;
+}
+
+.card-revelado {
+    background-color: #EFF6FF;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #3B82F6;
+}
+
+code {
+    background: #fff;
+    padding: 3px 6px;
+    display: inline-block;
+    margin-top: 5px;
+    border: 1px solid #CBD5E1;
+    border-radius: 3px;
+    word-break: break-all;
+}
