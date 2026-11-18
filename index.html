@@ -8,342 +8,149 @@
 </head>
 <body>
 
-    <!-- Barra de Navegação Principal -->
+    <!-- BARRA DE ACESSIBILIDADE UNIVERSAL -->
+    <div class="acessibilidade-bar" role="region" aria-label="Barra de Acessibilidade">
+        <span>♿ <strong>Acessibilidade:</strong></span>
+        <button class="acc-btn" onclick="alterarFonte(1)" aria-label="Aumentar tamanho da letra">A+</button>
+        <button class="acc-btn" onclick="alterarFonte(-1)" aria-label="Diminuir tamanho da letra">A-</button>
+        <button class="acc-btn" onclick="resetarFonte()" aria-label="Tamanho normal da letra">A</button>
+        <button class="acc-btn" onclick="alternarTemaClaro()" id="btn-tema" aria-label="Alternar modo claro e escuro">☀️ Modo Claro</button>
+        <button class="acc-btn" onclick="alternarAltoContraste()" id="btn-contraste" aria-label="Ativar alto contraste">🌓 Alto Contraste</button>
+        <button class="acc-btn" onclick="lerPagina()" id="btn-voz" aria-label="Ouvir conteúdo da aba atual">🔊 Ouvir Texto</button>
+    </div>
+
+    <!-- BARRA DE NAVEGAÇÃO PRINCIPAL -->
     <nav class="navbar">
-        <div class="nav-brand">🌐 Projeto Integrado</div>
+        <div class="nav-brand">🌸 Projeto Integrado</div>
         <div class="nav-links">
-            <button class="nav-btn active" onclick="mudarModulo(event, 'mod-programacao')">💻 Programação</button>
+            <button class="nav-btn active" onclick="mudarModulo(event, 'mod-programacao')">💻 Programação & IA</button>
             <button class="nav-btn" onclick="mudarModulo(event, 'mod-robotica')">🤖 Robótica Inclusiva</button>
             <button class="nav-btn" onclick="mudarModulo(event, 'mod-fisica')">🔊 Física & Tecnociência</button>
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container" id="conteudo-principal">
 
         <!-- =========================================================
-             MÓDULO 1: PROGRAMAÇÃO (PERSONALOCK v1.0)
+             MÓDULO 1: PROGRAMAÇÃO & IA (TODAS AS 3 ATIVIDADES)
              ========================================================= -->
         <section id="mod-programacao" class="modulo active">
-            <div class="painel-container">
-                <header>
-                    <h2>🔒 PersonaLock v1.0</h2>
-                    <p>O seu painel visual de proteção de dados pessoais</p>
-                </header>
-
-                <!-- Botões das Abas Internas -->
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="abrirAbaLock(event, 'aba-proteger')">Proteger Informação</button>
-                    <button class="tab-btn" onclick="abrirAbaLock(event, 'aba-revelar')">Revelar Informação</button>
-                </div>
-
-                <!-- ABA 1: PROTEGER (CRIPTOGRAFAR) -->
-                <div id="aba-proteger" class="tab-content active">
-                    <div class="form-group">
-                        <label for="drop-tipo-dado">Tipo:</label>
-                        <select id="drop-tipo-dado">
-                            <option value="1">Senha</option>
-                            <option value="2">Documento</option>
-                            <option value="3">Anotação</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txt-dado-proteger">Dado:</label>
-                        <input type="text" id="txt-dado-proteger" placeholder="Senha, CPF, texto...">
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="chk-chave-auto" checked>
-                        <label for="chk-chave-auto">Gerar chave automática segura</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="num-chave-manual">Chave: <span id="valor-slider">3</span></label>
-                        <input type="range" id="num-chave-manual" min="1" max="25" value="3" disabled>
-                    </div>
-
-                    <button class="btn btn-success" onclick="processarProtecao()">🔐 Proteger Dado</button>
-                    <div id="out-proteger" class="output-box"></div>
-                </div>
-
-                <!-- ABA 2: REVELAR (DESCRIPTOGRAFAR) -->
-                <div id="aba-revelar" class="tab-content">
-                    <div class="form-group">
-                        <label for="txt-dado-revelar">Texto Cripto:</label>
-                        <input type="text" id="txt-dado-revelar" placeholder="Cole o texto codificado aqui...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="num-chave-revelar">Chave Usada:</label>
-                        <input type="number" id="num-chave-revelar" value="0" min="0" max="25">
-                    </div>
-
-                    <button class="btn btn-primary" onclick="processarRevelacao()">🔓 Revelar Dado</button>
-                    <div id="out-revelar" class="output-box"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             MÓDULO 2: ROBÓTICA INCLUSIVA
-             ========================================================= -->
-        <section id="mod-robotica" class="modulo">
             <header class="section-header">
-                <h1>🤖 Robótica Inclusiva: Soluções Tecnológicas para a Autonomia e Qualidade de Vida</h1>
-                <p>Integração entre Ciência, Tecnologia e Inteligência Artificial na promoção da acessibilidade.</p>
+                <h1>💻 Programação, Inteligência Artificial e Acessibilidade</h1>
+                <p><strong>Integrantes da Equipe:</strong> Yolanda Barrera, Emanuelle Machado, Gabriel Mendes, Samira Souza, Wuilmer Rivas</p>
             </header>
 
-            <!-- Introdução -->
-            <div class="card-grid">
-                <div class="card">
-                    <h3>🔬 A Ciência como Fundamento</h3>
-                    <p>Fornece o entendimento das capacidades e limitações humanas (visão, audição, tato) e os princípios da física e eletrônica, estabelecendo as diretrizes do desenho universal.</p>
-                </div>
-                <div class="card">
-                    <h3>⚙️ A Tecnologia como Aplicação</h3>
-                    <p>Concretiza o conhecimento em dispositivos como Arduino, displays LCD/OLED, matrizes de LED e buzzers, criando sistemas multissensoriais para pessoas cegas e surdas.</p>
-                </div>
-                <div class="card">
-                    <h3>🧠 A IA como Catalisadora</h3>
-                    <p>Viabiliza conversão de dados em tempo real (texto em voz, tradução) e otimiza a ideação, permitindo simular cenários de usabilidade de forma responsável.</p>
-                </div>
-            </div>
+            <!-- ATIVIDADE 1: PERSONALOCK v1.0 -->
+            <div class="card">
+                <h3>🔐 Atividade 1: PersonaLock v1.0 (Proteção de Dados Pessoais)</h3>
+                <p style="margin-bottom: 15px;">Painel visual desenvolvido em HTML, CSS e JavaScript para proteger senhas, documentos e anotações através de criptografia de deslocamento.</p>
 
-            <!-- Simulador Interativo de Robótica -->
-            <div class="simulador-box">
-                <h3>🎛️ Simulador Multissensorial (Matriz de LEDs & Código Morse)</h3>
-                <p>Teste na prática como os sinais visuais e sonoros funcionam em um totem acessível:</p>
-                
-                <div class="simulador-controles">
-                    <div class="sim-coluna">
-                        <h4>1. Matriz de LEDs (Símbolos)</h4>
-                        <div class="matriz-display" id="matriz-led">😊</div>
-                        <p id="matriz-legenda" class="legenda">Alegria (Amarelo/Laranja)</p>
-                        <div class="btn-group">
-                            <button class="btn-mini" onclick="mudarMatriz('😊', 'Alegria (Rosto sorridente)', '#facc15')">Alegria</button>
-                            <button class="btn-mini" onclick="mudarMatriz('😢', 'Tristeza (Rosto triste)', '#38bdf8')">Tristeza</button>
-                            <button class="btn-mini" onclick="mudarMatriz('⚠️', 'Atenção (Triângulo de alerta)', '#fb923c')">Atenção</button>
-                            <button class="btn-mini" onclick="mudarMatriz('🆘', 'Ajuda (Símbolo de socorro)', '#ef4444')">Ajuda</button>
-                            <button class="btn-mini" onclick="mudarMatriz('➡️', 'Direção (Seta de rota)', '#4ade80')">Direção</button>
+                <div class="painel-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" onclick="abrirAbaLock(event, 'aba-proteger')">Proteger Informação</button>
+                        <button class="tab-btn" onclick="abrirAbaLock(event, 'aba-revelar')">Revelar Informação</button>
+                    </div>
+
+                    <!-- ABA 1: PROTEGER -->
+                    <div id="aba-proteger" class="tab-content active">
+                        <div class="form-group">
+                            <label for="drop-tipo-dado">Tipo:</label>
+                            <select id="drop-tipo-dado">
+                                <option value="1">Senha</option>
+                                <option value="2">Documento</option>
+                                <option value="3">Anotação</option>
+                            </select>
                         </div>
-                    </div>
 
-                    <div class="sim-coluna">
-                        <h4>2. Código Morse (LED + Buzzer)</h4>
-                        <div class="led-indicador" id="led-morse"></div>
-                        <p id="morse-status" class="legenda">Aguardando acionamento...</p>
-                        <div class="btn-group">
-                            <button class="btn btn-danger" onclick="emitirSOS()">🚨 Emitir SOS (· · · - - - · · ·)</button>
+                        <div class="form-group">
+                            <label for="txt-dado-proteger">Dado:</label>
+                            <input type="text" id="txt-dado-proteger" placeholder="Senha, CPF, texto...">
                         </div>
+
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="chk-chave-auto" checked>
+                            <label for="chk-chave-auto">Gerar chave automática segura</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="num-chave-manual">Chave: <span id="valor-slider">3</span></label>
+                            <input type="range" id="num-chave-manual" min="1" max="25" value="3" disabled>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="processarProtecao()">🔐 Proteger Dado</button>
+                        <div id="out-proteger" class="output-box"></div>
+                    </div>
+
+                    <!-- ABA 2: REVELAR -->
+                    <div id="aba-revelar" class="tab-content">
+                        <div class="form-group">
+                            <label for="txt-dado-revelar">Texto Cripto:</label>
+                            <input type="text" id="txt-dado-revelar" placeholder="Cole o texto codificado aqui...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="num-chave-revelar">Chave Usada:</label>
+                            <input type="number" id="num-chave-revelar" value="0" min="0" max="25">
+                        </div>
+
+                        <button class="btn btn-secondary" onclick="processarRevelacao()">🔓 Revelar Dado</button>
+                        <div id="out-revelar" class="output-box"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tabela Comparativa dos Recursos -->
+            <!-- ATIVIDADE 2: EXPLORANDO OS LLMs (LEITURA FACILITADA) -->
             <div class="card">
-                <h3>📊 Comparação dos Três Recursos Tecnológicos</h3>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Recurso</th>
-                                <th>O que comunica / Sinal</th>
-                                <th>Aplicação</th>
-                                <th>Vantagens e Limitações</th>
-                                <th>Adaptações Necessárias</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Matriz de LEDs</strong></td>
-                                <td>Símbolos, setas e ícones.<br><em>Sinal: Visual</em></td>
-                                <td>Rotas de evacuação, painéis de senha e semáforos.</td>
-                                <td><strong>Vantagem:</strong> Alta visibilidade à distância.<br><strong>Limitação:</strong> Pouco espaço para textos longos.</td>
-                                <td>Sinais sonoros (bipes) e contraste para daltonismo.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Código Morse (LED + Buzzer)</strong></td>
-                                <td>Pulsos curtos (·) e longos (-).<br><em>Sinal: Visual e Sonoro</em></td>
-                                <td>Pedidos de emergência e totens de auxílio rápido.</td>
-                                <td><strong>Vantagem:</strong> Redundância multissensorial.<br><strong>Limitação:</strong> Exige conhecer Morse.</td>
-                                <td>Decodificador automático para texto ou áudio falado.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Display (LCD / OLED)</strong></td>
-                                <td>Textos completos e status.<br><em>Sinal: Visual detalhado</em></td>
-                                <td>Totens de atendimento, menus e guias passo a passo.</td>
-                                <td><strong>Vantagem:</strong> Alta precisão textual.<br><strong>Limitação:</strong> Ineficaz para cegos ou analfabetos.</td>
-                                <td>Síntese de voz, fontes de alto contraste e Braille nos botões.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
+                <p>Na seção de acessibilidade do nosso projeto, demonstramos na prática como a <strong>Engenharia de Prompt</strong> democratiza o acesso à informação. Ao testar a adaptação de bulas médicas (Losartana Potássica) com Inteligência Artificial, comprovamos que instruções bem planejadas eliminam barreiras de leitura, permitindo que idosos e pessoas com dificuldades cognitivas compreendam seus tratamentos com mais autonomia e segurança.</p>
 
-            <!-- Proposta de Melhoria e Uso Responsável da IA -->
-            <div class="card-grid">
-                <div class="card destaque-borda">
-                    <h3>💡 Proposta de Melhoria: Display Híbrido Multissensorial</h3>
-                    <ul>
-                        <li><strong>Síntese de Voz (DFPlayer Mini):</strong> Reproduz em áudio falado toda mensagem exibida na tela.</li>
-                        <li><strong>Retorno Háptico (Vibracall):</strong> Motor de vibração sob o botão que confirma o acionamento pelo tato.</li>
-                        <li><strong>Identificação Tátil:</strong> Botão com relevo e caracteres em Braille ("SOS" / "AJUDA").</li>
-                        <li><strong>Validação:</strong> Teste de transmissão cega com voluntários vendados buscando 100% de autonomia tátil/auditiva.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>🛡️ Uso Responsável da IA e Conclusão</h3>
-                    <p>A IA (Gemini) foi utilizada para organizar tópicos e tabelas, mas passou por rigorosa verificação humana (norma <strong>ABNT NBR 9050</strong> e datasheets de componentes).</p>
-                    <p style="margin-top: 10px;"><strong>Correção Crítica:</strong> Identificamos que o Código Morse puro não basta em locais públicos porque a população geral não sabe decodificá-lo, exigindo tradução automática no microcontrolador.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             MÓDULO 3: FÍSICA E TECNOCIÊNCIA
-             ========================================================= -->
-        <section id="mod-fisica" class="modulo">
-            <header class="section-header">
-                <h1>🔊 Ciência do Som: Audição, Acessibilidade e Qualidade de Vida</h1>
-                <p>Investigação acústica no ambiente escolar e propostas de controle de poluição sonora.</p>
-            </header>
-
-            <!-- Conceitos Fundamentais -->
-            <div class="card-grid">
-                <div class="card">
-                    <h3>🌊 Natureza da Onda Sonora</h3>
-                    <p>O som é uma onda <strong>mecânica e longitudinal</strong> gerada por vibrações. Precisa de um meio material (sólido, líquido ou gasoso) para se propagar — não se propaga no vácuo.</p>
-                </div>
-                <div class="card">
-                    <h3>🎵 Frequência e Intensidade</h3>
-                    <p><strong>Frequência (Hz):</strong> Define se o som é grave (baixa freq.) ou agudo (alta freq.). Faixa humana: <strong>20 Hz a 20.000 Hz</strong>.<br>
-                    <strong>Decibéis (dB):</strong> Escala logarítmica; cada +3 dB dobra a energia sonora.</p>
-                </div>
-                <div class="card">
-                    <h3>🩺 Saúde Auditiva (OMS)</h3>
-                    <p>Exposição contínua acima de <strong>85 dB</strong> causa perda auditiva irreversível (PAIR). Acima de <strong>120 dB</strong> atinge o limiar da dor. O excesso de ruído libera cortisol e adrenalina.</p>
-                </div>
-            </div>
-
-            <!-- Simulador Interativo: Semáforo do Ruído -->
-            <div class="simulador-box">
-                <h3>🚦 Simulador: Semáforo do Ruído Escolar</h3>
-                <p>Arraste o controle para testar os níveis medidos na escola e ver o impacto na saúde e aprendizagem:</p>
-                <div class="semaforo-container">
-                    <input type="range" id="slider-db" min="35" max="125" value="68" oninput="atualizarSemaforo(this.value)">
-                    <div class="semaforo-visor" id="visor-db">
-                        <span id="valor-db">68 dB</span> — <span id="status-db">Ambiente Tranquilo (Biblioteca)</span>
+                <div class="bula-comparativo">
+                    <div class="bula-box original">
+                        <h4>📄 Texto Original (Complexo)</h4>
+                        <p><em>"Este medicamento é contraindicado em pacientes com hipersensibilidade conhecida à substância ativa ou a qualquer um dos excipientes. A coadministração com alisquireno é contraindicada em pacientes com diabetes mellitus ou insuficiência renal (TFG &lt; 60 mL/min/1,73 m²)."</em></p>
                     </div>
+
+                    <div class="bula-controles">
+                        <button class="btn-mini" id="btn-teste1" onclick="alternarTesteBula(1)">Ver Teste 1: Prompt Simples</button>
+                        <button class="btn-mini active" id="btn-teste2" onclick="alternarTesteBula(2)">Ver Teste 2: Prompt Refinado (Acessível)</button>
+                    </div>
+
+                    <div id="resultado-bula" class="bula-box refinado"></div>
                 </div>
+
+                <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Responsabilidade Ética:</strong> Em temas de saúde, a IA não substitui a revisão humana: é dever ético conferir se nenhuma contraindicação vital foi apagada durante a simplificação.</p>
             </div>
 
-            <!-- Tabela de Medições da Escola -->
+            <!-- ATIVIDADE 3: NUTRITECH (MODELO COMPUTACIONAL NUTRICIONAL) -->
             <div class="card">
-                <h3>📋 Tabela de Registro de Medições na Escola (13/11)</h3>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Valor</th>
-                                <th>Data / Hora</th>
-                                <th>Mín / Méd / Máx</th>
-                                <th>Local / Acontecimento</th>
-                                <th>Observações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="alerta-alto">
-                                <td><strong>83 dB</strong></td>
-                                <td>13/11 | 07:59</td>
-                                <td>Mín: 39 | Méd: 75 | Máx: 83</td>
-                                <td>Aula E.F. Quadra Aberta</td>
-                                <td>Nível considerável de ruído devido à atividade física.</td>
-                            </tr>
-                            <tr class="alerta-critico">
-                                <td><strong>84 dB</strong></td>
-                                <td>13/11 | 08:04</td>
-                                <td>Mín: 49 | Méd: 73 | Máx: 85</td>
-                                <td>Aula E.F. Quadra Fechada</td>
-                                <td>Maior nível registrado; próximo ao limite de risco (85 dB).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>73 dB</strong></td>
-                                <td>13/11 | 08:09</td>
-                                <td>Mín: 49 | Méd: 67 | Máx: 73</td>
-                                <td>Sala de Aula Vazia</td>
-                                <td>Queda no nível de ruído pela ausência de pessoas.</td>
-                            </tr>
-                            <tr class="alerta-seguro">
-                                <td><strong>68 dB</strong></td>
-                                <td>13/11 | 08:12</td>
-                                <td>Mín: 38 | Méd: 55 | Máx: 68</td>
-                                <td>Biblioteca Vazia</td>
-                                <td>Ambiente mais tranquilo e propício à concentração.</td>
-                            </tr>
-                            <tr class="alerta-seguro">
-                                <td><strong>66 dB</strong></td>
-                                <td>13/11 | 08:15</td>
-                                <td>Mín: 54 | Méd: 63 | Máx: 66</td>
-                                <td>Banheiro Vazio</td>
-                                <td>Menor valor registrado na investigação.</td>
-                            </tr>
-                            <tr class="alerta-alto">
-                                <td><strong>77 dB</strong></td>
-                                <td>13/11 | 08:19</td>
-                                <td>Mín: 56 | Méd: 68 | Máx: 67*</td>
-                                <td>Sala da Pedagogia</td>
-                                <td>Aumento de ruído por conversas simultâneas no atendimento.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                <h3>🥗 Atividade 3: NutriTech — Modelo Computacional Nutricional</h3>
+                <p style="margin-bottom: 15px;">Nesta etapa, unimos programação (estruturada em Python e convertida para a web) e matemática para democratizar o acesso à informação nutricional. O sistema calcula automaticamente os nutrientes das refeições, ajudando idosos, diabéticos e hipertensos a tomarem decisões mais seguras e autônomas sobre sua alimentação.</p>
 
-            <!-- Análise dos Dados (Perguntas e Respostas) -->
-            <div class="card">
-                <h3>🔎 Análise dos Resultados Coletados</h3>
-                <div class="qa-item">
-                    <strong>1. Maior e menor valor indicado:</strong>
-                    <p>O maior foi na <strong>quadra fechada (84 dB, pico de 85 dB)</strong> durante a aula de Educação Física. O menor foi no <strong>banheiro vazio (66 dB)</strong>.</p>
-                </div>
-                <div class="qa-item">
-                    <strong>2. Situações que explicam as diferenças:</strong>
-                    <p>Quantidade de pessoas, conversas, gritos, movimentação intensa e reverberação (eco) em locais fechados frente a ambientes vazios.</p>
-                </div>
-                <div class="qa-item">
-                    <strong>3. Mudança conforme horário e movimentação:</strong>
-                    <p>Sim. Às 07h59 e 08h04 (horário de aula agitada nas quadras) os valores atingiram 83–84 dB. Em seguida, em locais vazios (biblioteca e banheiro), caíram para 68 dB e 66 dB.</p>
-                </div>
-                <div class="qa-item">
-                    <strong>4. Limitações da investigação e uso do aplicativo:</strong>
-                    <p>Poucas medições em horários restritos. Aplicativos de celular dependem da qualidade do microfone e não possuem calibração profissional, servindo apenas como estimativa.</p>
-                </div>
-                <div class="qa-item">
-                    <strong>5. Mudanças para reduzir o desconforto sonoro:</strong>
-                    <p>Instalação de materiais absorventes (cortinas, tapetes, painéis acústicos), organização das atividades e controle do volume das conversas.</p>
-                </div>
-            </div>
+                <div class="nutri-panel">
+                    <div class="nutri-header">
+                        <h4>🥗 NutriTech — Monitor Nutricional Interativo</h4>
+                        <small>Apoio à autonomia alimentar para idosos, diabéticos e hipertensos</small>
+                    </div>
 
-            <!-- Propostas para a Escola e Uso Crítico de IA -->
-            <div class="card-grid">
-                <div class="card destaque-borda">
-                    <h3>🏫 Propostas Práticas de Melhoria na Escola</h3>
-                    <ol>
-                        <li><strong>Tratamento Acústico Básico:</strong> Placas absorventes na quadra fechada e ponteiras de feltro/borracha nos pés das cadeiras das salas de aula para reduzir reverberação e atrito.</li>
-                        <li><strong>Semáforo do Som e Fluxo:</strong> Sinalização luminosa na Sala da Pedagogia (que marcou 77 dB) e Biblioteca para preservar o silêncio e proteger alunos com hipersensibilidade auditiva.</li>
-                    </ol>
-                </div>
+                    <div class="nutri-grid-inputs">
+                        <div class="form-group">
+                            <label for="nutri-perfil">Perfil de Saúde:</label>
+                            <select id="nutri-perfil" onchange="atualizarNutriTech()">
+                                <option value="Padrão">Padrão</option>
+                                <option value="Diabetes (Carboidratos)">Diabetes (Carboidratos)</option>
+                                <option value="Hipertensão (Sódio)">Hipertensão (Sódio)</option>
+                            </select>
+                        </div>
 
-                <div class="card">
-                    <h3>🤖 Uso Crítico da Inteligência Artificial</h3>
-                    <p>A IA auxiliou na estruturação dos tópicos e revisão textual. Nenhum dado pessoal de alunos foi exposto, e todos os parâmetros científicos (limites da OMS e faixa audível) foram validados em materiais didáticos de Física e Biologia.</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                        <div class="form-group">
+                            <label for="nutri-alimento">Alimento:</label>
+                            <select id="nutri-alimento">
+                                <option value="Arroz branco cozido">Arroz branco cozido</option>
+                                <option value="Feijão carioca cozido">Feijão carioca cozido</option>
+                                <option value="Peito de frango grelhado">Peito de frango grelhado</option>
+                                <option value="Pão francês">Pão francês</option>
+                                <option value="Banana prata">Banana prata</option>
+                                <option value="Queijo mussarela">Queijo mussarela</option>
+                                <option value="Ovo cozido">Ovo cozido</option>
+                                <option value="Salada (alface e tomate)">Salada (alface e tomate)</option>
+                            </select
