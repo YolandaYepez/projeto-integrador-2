@@ -394,7 +394,7 @@ function atualizarSemaforo(db) {
 }
 
 /* =========================================================
-   7. DESAFIO INTERATIVO FINAL (QUIZ RÁPIDO)
+   7. DESAFIO INTERATIVO POR MATÉRIA (QUIZ)
    ========================================================= */
 function verificarQuiz(botao, acertou, idPergunta) {
     const feedback = document.getElementById(idPergunta + '-feedback');

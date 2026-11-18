@@ -54,7 +54,7 @@
         </div>
 
         <!-- =========================================================
-             MÓDULO 1: PROGRAMAÇÃO & IA (TODAS AS 3 ATIVIDADES)
+             MÓDULO 1: PROGRAMAÇÃO & IA
              ========================================================= -->
         <section id="mod-programacao" class="modulo active">
             <header class="section-header">
@@ -81,7 +81,6 @@
                         <button class="tab-btn" onclick="abrirAbaLock(event, 'aba-revelar')">Revelar Informação</button>
                     </div>
 
-                    <!-- ABA 1: PROTEGER -->
                     <div id="aba-proteger" class="tab-content active">
                         <div class="form-group">
                             <label for="drop-tipo-dado">Tipo de Informação:</label>
@@ -111,7 +110,6 @@
                         <div id="out-proteger" class="output-box"></div>
                     </div>
 
-                    <!-- ABA 2: REVELAR -->
                     <div id="aba-revelar" class="tab-content">
                         <div class="form-group">
                             <label for="txt-dado-revelar">Texto Criptografado:</label>
@@ -178,7 +176,7 @@
                     <h3>🥗 Atividade 3: NutriTech — Modelo Computacional Nutricional</h3>
                     <span class="tag-tech">Regra de Três Proporcional • Saúde Preventiva</span>
                 </div>
-                <p style="margin-bottom: 12px;">Baseado na <strong>Tabela Brasileira de Composição de Alimentos (TACO/UNICAMP)</strong>, o NutriTech aplica proporção matemática em tempo real ($Valor = \frac{Nutriente_{100g} \times Peso}{100}$) para alertar sobre picos glicêmicos e excesso de sódio em uma única refeição.</p>
+                <p style="margin-bottom: 12px;">Baseado na <strong>Tabela Brasileira de Composição de Alimentos (TACO/UNICAMP)</strong>, o NutriTech aplica proporção matemática em tempo real para alertar sobre picos glicêmicos e excesso de sódio em uma única refeição.</p>
 
                 <div class="curiosidade-box" style="margin-bottom: 16px;">
                     <strong>🩺 Parâmetros Clínicos Utilizados nos Alertas:</strong>
@@ -231,6 +229,23 @@
                     <div id="nutri-saida" class="nutri-resultado-box"></div>
                 </div>
             </div>
+
+            <!-- PERGUNTA EXCLUSIVA DE PROGRAMAÇÃO & IA -->
+            <div class="card quiz-card">
+                <div class="card-topo">
+                    <h3>🎯 Desafio Rápido — Programação & IA</h3>
+                    <span class="tag-tech">Fixação • Programação</span>
+                </div>
+                <div class="quiz-item" style="margin-bottom: 0;">
+                    <p><strong>Na NutriTech, a partir de quanto sódio em uma única refeição o sistema dispara o alerta vermelho para hipertensos?</strong></p>
+                    <div class="quiz-opcoes">
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-prog')">200 mg</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, true, 'q-prog')">Acima de 600 mg</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-prog')">2.500 mg</button>
+                    </div>
+                    <p id="q-prog-feedback" class="quiz-feedback"></p>
+                </div>
+            </div>
         </section>
 
         <!-- =========================================================
@@ -241,6 +256,27 @@
                 <h1>🤖 Robótica Inclusiva: Soluções Tecnológicas para a Autonomia e Qualidade de Vida</h1>
                 <p>Prototipagem com microcontroladores, hardware acessível e desenho universal (ABNT NBR 9050).</p>
             </header>
+
+            <!-- GALERIA DE 2 IMAGENS: MATRIZ DE LEDS (.jpg) E DISPLAY (.png) -->
+            <div class="galeria-dupla">
+                <figure class="galeria-card" style="margin-bottom: 0;">
+                    <img src="img-matriz-led.jpg" alt="Infográfico: Comunicação Visual com Matrizes de LEDs" class="img-projeto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-placeholder" style="display: none;">
+                        <span>🖼️ Imagem 1: Matriz de LEDs</span>
+                        <small>Verifique o arquivo <strong>img-matriz-led.jpg</strong></small>
+                    </div>
+                    <figcaption>📸 1. Matriz de LEDs — Sinalização visual por ícones e setas.</figcaption>
+                </figure>
+
+                <figure class="galeria-card" style="margin-bottom: 0;">
+                    <img src="img-display.png" alt="Infográfico: Display LCD / OLED na Acessibilidade" class="img-projeto" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="img-placeholder" style="display: none;">
+                        <span>🖼️ Imagem 2: Display (LCD / OLED)</span>
+                        <small>Verifique o arquivo <strong>img-display.png</strong></small>
+                    </div>
+                    <figcaption>📸 2. Display (LCD / OLED) — Comunicação textual direta.</figcaption>
+                </figure>
+            </div>
 
             <div class="card-grid">
                 <div class="card">
@@ -432,6 +468,23 @@
                     <p style="margin-top: 10px;"><strong>Correção Crítica:</strong> Identificamos que o Código Morse puro não basta em locais públicos porque a população geral não sabe decodificá-lo, exigindo tradução automática no microcontrolador.</p>
                 </div>
             </div>
+
+            <!-- PERGUNTA EXCLUSIVA DE ROBÓTICA INCLUSIVA -->
+            <div class="card quiz-card">
+                <div class="card-topo">
+                    <h3>🎯 Desafio Rápido — Robótica Inclusiva</h3>
+                    <span class="tag-tech">Fixação • Robótica</span>
+                </div>
+                <div class="quiz-item" style="margin-bottom: 0;">
+                    <p><strong>Por que um totem acessível não deve depender APENAS de um Display LCD com texto escrito?</strong></p>
+                    <div class="quiz-opcoes">
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-rob')">Porque o LCD gasta muita bateria</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, true, 'q-rob')">Porque exclui pessoas cegas ou não alfabetizadas sem áudio/Braille</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-rob')">Porque não funciona dentro de escolas</button>
+                    </div>
+                    <p id="q-rob-feedback" class="quiz-feedback"></p>
+                </div>
+            </div>
         </section>
 
         <!-- =========================================================
@@ -596,46 +649,22 @@
                     <p>A IA auxiliou na estruturação dos tópicos e revisão textual. Nenhum dado pessoal de alunos foi exposto, e todos os parâmetros científicos (limites da OMS e faixa audível) foram validados em materiais didáticos de Física e Biologia.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- =========================================================
-             DESAFIO INTERATIVO FINAL (QUIZ RÁPIDO PARA VISITANTES)
-             ========================================================= -->
-        <section class="card quiz-card">
-            <div class="card-topo">
-                <h3>🎯 Desafio Rápido: Teste seus Conhecimentos do Projeto</h3>
-                <span class="tag-tech">Interatividade • Fixação</span>
-            </div>
-            <p style="margin-bottom: 15px;">Responda às perguntas abaixo para testar o que você explorou nas três áreas:</p>
-            
-            <div class="quiz-item">
-                <p><strong>1. Na NutriTech, a partir de quanto sódio em uma única refeição o sistema dispara o alerta vermelho para hipertensos?</strong></p>
-                <div class="quiz-opcoes">
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q1')">200 mg</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q1')">Acima de 600 mg</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q1')">2.500 mg</button>
+            <!-- PERGUNTA EXCLUSIVA DE FÍSICA & TECNOCIÊNCIA -->
+            <div class="card quiz-card">
+                <div class="card-topo">
+                    <h3>🎯 Desafio Rápido — Física & Tecnociência</h3>
+                    <span class="tag-tech">Fixação • Física</span>
                 </div>
-                <p id="q1-feedback" class="quiz-feedback"></p>
-            </div>
-
-            <div class="quiz-item">
-                <p><strong>2. Por que um totem acessível não deve depender APENAS de um Display LCD com texto?</strong></p>
-                <div class="quiz-opcoes">
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q2')">Porque o LCD gasta muita bateria</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q2')">Porque exclui pessoas cegas ou não alfabetizadas sem áudio/Braille</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q2')">Porque não funciona dentro de escolas</button>
+                <div class="quiz-item" style="margin-bottom: 0;">
+                    <p><strong>Qual local da escola registrou o maior pico de ruído (84 dB / máx. 85 dB) na investigação acústica?</strong></p>
+                    <div class="quiz-opcoes">
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-fis')">Biblioteca Vazia</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, false, 'q-fis')">Sala da Pedagogia</button>
+                        <button class="btn-mini" onclick="verificarQuiz(this, true, 'q-fis')">Aula de Educação Física na Quadra Fechada</button>
+                    </div>
+                    <p id="q-fis-feedback" class="quiz-feedback"></p>
                 </div>
-                <p id="q2-feedback" class="quiz-feedback"></p>
-            </div>
-
-            <div class="quiz-item">
-                <p><strong>3. Qual local da escola registrou o maior pico de ruído (84 dB / máx. 85 dB) na investigação acústica?</strong></p>
-                <div class="quiz-opcoes">
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q3')">Biblioteca Vazia</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q3')">Sala da Pedagogia</button>
-                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q3')">Aula de Educação Física na Quadra Fechada</button>
-                </div>
-                <p id="q3-feedback" class="quiz-feedback"></p>
             </div>
         </section>
 
