@@ -294,7 +294,7 @@ function atualizarNutriTech() {
 atualizarNutriTech();
 
 /* =========================================================
-   5. SIMULADORES DE ROBÓTICA (MATRIZ LED & CÓDIGO MORSE)
+   5. SIMULADORES DE ROBÓTICA (MATRIZ LED, MORSE & DISPLAY)
    ========================================================= */
 function mudarMatriz(icone, descricao, cor) {
     const display = document.getElementById('matriz-led');
@@ -337,34 +337,6 @@ async function emitirSOS() {
     tocandoSOS = false;
 }
 
-/* =========================================================
-   6. SIMULADOR DE FÍSICA (SEMÁFORO DO RUÍDO)
-   ========================================================= */
-function atualizarSemaforo(db) {
-    const visor = document.getElementById('visor-db');
-    const valorSpan = document.getElementById('valor-db');
-    const statusSpan = document.getElementById('status-db');
-
-    valorSpan.textContent = `${db} dB`;
-
-    if (db <= 70) {
-        visor.style.backgroundColor = '#16a34a';
-        statusSpan.textContent = 'Seguro e Confortável (Ex: Biblioteca / Banheiro vazio)';
-    } else if (db <= 84) {
-        visor.style.backgroundColor = '#d97706';
-        statusSpan.textContent = 'Atenção: Desconforto e Fadiga Mental (Ex: Sala da Pedagogia / Quadra)';
-    } else if (db < 120) {
-        visor.style.backgroundColor = '#dc2626';
-        statusSpan.textContent = 'PERIGO (OMS): Risco de Perda Auditiva Irreversível (PAIR)';
-    } else {
-        visor.style.backgroundColor = '#7f1d1d';
-        statusSpan.textContent = 'LIMIAR DA DOR: Dano auditivo imediato!';
-    }
-}
-
-/* =========================================================
-   CONTROLE MANUAL DO DISPLAY (LCD / OLED)
-   ========================================================= */
 function atualizarDisplayManual() {
     const l1 = document.getElementById('input-disp-l1').value;
     const l2 = document.getElementById('input-disp-l2').value;
@@ -394,4 +366,29 @@ function mensagemPadraoDisplay() {
     document.getElementById('input-disp-l2').value = '';
     document.getElementById('display-linha1').textContent = '[ SOS / AJUDA ATIVADA ]';
     document.getElementById('display-linha2').textContent = 'Atendente a caminho!';
+}
+
+/* =========================================================
+   6. SIMULADOR DE FÍSICA (SEMÁFORO DO RUÍDO)
+   ========================================================= */
+function atualizarSemaforo(db) {
+    const visor = document.getElementById('visor-db');
+    const valorSpan = document.getElementById('valor-db');
+    const statusSpan = document.getElementById('status-db');
+
+    valorSpan.textContent = `${db} dB`;
+
+    if (db <= 70) {
+        visor.style.backgroundColor = '#16a34a';
+        statusSpan.textContent = 'Seguro e Confortável (Ex: Biblioteca / Banheiro vazio)';
+    } else if (db <= 84) {
+        visor.style.backgroundColor = '#d97706';
+        statusSpan.textContent = 'Atenção: Desconforto e Fadiga Mental (Ex: Sala da Pedagogia / Quadra)';
+    } else if (db < 120) {
+        visor.style.backgroundColor = '#dc2626';
+        statusSpan.textContent = 'PERIGO (OMS): Risco de Perda Auditiva Irreversível (PAIR)';
+    } else {
+        visor.style.backgroundColor = '#7f1d1d';
+        statusSpan.textContent = 'LIMIAR DA DOR: Dano auditivo imediato!';
+    }
 }
