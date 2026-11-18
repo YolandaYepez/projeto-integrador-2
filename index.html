@@ -195,11 +195,13 @@
             </div>
 
             <!-- Simulador Interativo de Robótica -->
+            <!-- Simulador Interativo de Robótica (3 Recursos) -->
             <div class="simulador-box">
-                <h3>🎛️ Simulador Multissensorial (Matriz de LEDs & Código Morse)</h3>
-                <p>Teste na prática como os sinais visuais e sonoros funcionam em um totem acessível:</p>
+                <h3>🎛️ Simulador Multissensorial (Matriz de LEDs, Código Morse & Display LCD/OLED)</h3>
+                <p>Teste na prática como os sinais visuais, sonoros e textuais funcionam em um totem acessível:</p>
                 
                 <div class="simulador-controles">
+                    <!-- COLUNA 1: MATRIZ DE LEDS -->
                     <div class="sim-coluna">
                         <h4>1. Matriz de LEDs (Símbolos)</h4>
                         <div class="matriz-display" id="matriz-led">😊</div>
@@ -213,6 +215,7 @@
                         </div>
                     </div>
 
+                    <!-- COLUNA 2: CÓDIGO MORSE -->
                     <div class="sim-coluna">
                         <h4>2. Código Morse (LED + Buzzer)</h4>
                         <div class="led-indicador" id="led-morse"></div>
@@ -221,6 +224,65 @@
                             <button class="btn btn-danger" onclick="emitirSOS()">🚨 Emitir SOS (· · · - - - · · ·)</button>
                         </div>
                     </div>
+
+                    <!-- COLUNA 3: DISPLAY LCD / OLED MANUAL -->
+                    <div class="sim-coluna">
+                        <h4>3. Display (LCD / OLED)</h4>
+                        <div class="tela-display lcd" id="tela-display">
+                            <div id="display-linha1">[ SOS / AJUDA ATIVADA ]</div>
+                            <div id="display-linha2">Atendente a caminho!</div>
+                        </div>
+
+                        <div class="display-controles-manuais">
+                            <input type="text" id="input-disp-l1" maxlength="24" placeholder="Linha 1 (ex: SOS / AJUDA)" oninput="atualizarDisplayManual()">
+                            <input type="text" id="input-disp-l2" maxlength="24" placeholder="Linha 2 (ex: Aguarde no local)" oninput="atualizarDisplayManual()">
+                        </div>
+
+                        <div class="btn-group" style="margin-top: 10px;">
+                            <button class="btn-mini active" id="btn-modo-lcd" onclick="mudarTipoDisplay('lcd')">Tela LCD (Verde)</button>
+                            <button class="btn-mini" id="btn-modo-oled" onclick="mudarTipoDisplay('oled')">Tela OLED (Alto Contraste)</button>
+                            <button class="btn-mini" onclick="mensagemPadraoDisplay()">Resetar SOS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Análise Técnica Específica do Display (LCD / OLED) -->
+            <div class="card">
+                <h3>🖥️ Análise do Display (LCD / OLED) na Acessibilidade</h3>
+                <p style="margin-bottom: 12px;">A mensagem escrita no display garante comunicação visual rápida, silenciosa e direta (essencial para pessoas surdas), mas por atuar em apenas um canal sensorial exige adaptações para acessibilidade universal:</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fator</th>
+                                <th>Vantagens</th>
+                                <th>Limitações e Desafios de Acessibilidade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tamanho da Tela e Extensão</strong></td>
+                                <td>Telas compactas reduzem o consumo de energia e o custo do projeto.</td>
+                                <td>Telas pequenas (ex.: 16x2) limitam palavras; texto rolante (scrolling) dificulta a leitura para baixa visão.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contraste e Legibilidade</strong></td>
+                                <td>Telas OLED (texto branco em fundo preto) facilitam a leitura sob luz solar.</td>
+                                <td>Fontes pequenas ou baixo contraste dificultam a leitura para idosos ou pessoas com baixa visão.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Idioma e Pictogramas</strong></td>
+                                <td>Texto no idioma local é direto para a maioria da população.</td>
+                                <td>Falha com estrangeiros ou não alfabetizados; exige ícones universais combinados (ex.: S.O.S.).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sensorialidade</strong></td>
+                                <td>Comunicação visual limpa e sem poluição sonora.</td>
+                                <td>Inacessível para pessoas cegas se não houver síntese de voz (áudio) ou resposta tátil (Braille/vibração).</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

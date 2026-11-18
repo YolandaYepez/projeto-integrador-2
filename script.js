@@ -361,3 +361,37 @@ function atualizarSemaforo(db) {
         statusSpan.textContent = 'LIMIAR DA DOR: Dano auditivo imediato!';
     }
 }
+
+/* =========================================================
+   CONTROLE MANUAL DO DISPLAY (LCD / OLED)
+   ========================================================= */
+function atualizarDisplayManual() {
+    const l1 = document.getElementById('input-disp-l1').value;
+    const l2 = document.getElementById('input-disp-l2').value;
+
+    document.getElementById('display-linha1').textContent = l1.trim() !== '' ? l1 : '[ SOS / AJUDA ATIVADA ]';
+    document.getElementById('display-linha2').textContent = l2.trim() !== '' ? l2 : 'Atendente a caminho!';
+}
+
+function mudarTipoDisplay(tipo) {
+    const tela = document.getElementById('tela-display');
+    const btnLcd = document.getElementById('btn-modo-lcd');
+    const btnOled = document.getElementById('btn-modo-oled');
+
+    if (tipo === 'lcd') {
+        tela.className = 'tela-display lcd';
+        btnLcd.classList.add('active');
+        btnOled.classList.remove('active');
+    } else {
+        tela.className = 'tela-display oled';
+        btnOled.classList.add('active');
+        btnLcd.classList.remove('active');
+    }
+}
+
+function mensagemPadraoDisplay() {
+    document.getElementById('input-disp-l1').value = '';
+    document.getElementById('input-disp-l2').value = '';
+    document.getElementById('display-linha1').textContent = '[ SOS / AJUDA ATIVADA ]';
+    document.getElementById('display-linha2').textContent = 'Atendente a caminho!';
+}
