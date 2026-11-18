@@ -20,7 +20,7 @@
 
     <!-- BARRA DE NAVEGAÇÃO PRINCIPAL -->
     <nav class="navbar">
-        <div class="nav-brand">☀️ Projeto Integrado</div>
+        <div class="nav-brand">☀️ Projeto Integrado <span class="badge-ano">2026</span></div>
         <div class="nav-links">
             <button class="nav-btn active" onclick="mudarModulo(event, 'mod-programacao')">💻 Programação & IA</button>
             <button class="nav-btn" onclick="mudarModulo(event, 'mod-robotica')">🤖 Robótica Inclusiva</button>
@@ -29,6 +29,29 @@
     </nav>
 
     <main class="container" id="conteudo-principal">
+
+        <!-- BANNER HERO DE DESTAQUE E INDICADORES -->
+        <div class="hero-banner">
+            <div class="hero-texto">
+                <span class="pill-destaque">✨ Mostra Interdisciplinar de Ciência & Tecnologia</span>
+                <h2>Tecnologia Assistiva, Inclusão Digital e Qualidade de Vida</h2>
+                <p>Soluções práticas integrando <strong>Desenvolvimento Web & IA</strong>, <strong>Prototipagem Robótica</strong> e <strong>Acústica Ambiental</strong> para promover autonomia a idosos, pessoas com deficiência e toda a comunidade escolar.</p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <span class="stat-num">3</span>
+                    <span class="stat-label">Áreas Integradas</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">5</span>
+                    <span class="stat-label">Simuladores Vivos</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Foco em Inclusão</span>
+                </div>
+            </div>
+        </div>
 
         <!-- =========================================================
              MÓDULO 1: PROGRAMAÇÃO & IA (TODAS AS 3 ATIVIDADES)
@@ -41,10 +64,18 @@
 
             <!-- ATIVIDADE 1: PERSONALOCK v1.0 -->
             <div class="card">
-                <h3>🔐 Atividade 1: PersonaLock v1.0 (Proteção de Dados Pessoais)</h3>
-                <p style="margin-bottom: 15px;">Painel visual desenvolvido em HTML, CSS e JavaScript para proteger senhas, documentos e anotações através de criptografia de deslocamento.</p>
+                <div class="card-topo">
+                    <h3>🔐 Atividade 1: PersonaLock v1.0 (Proteção de Dados Pessoais)</h3>
+                    <span class="tag-tech">Criptografia Simétrica • ASCII</span>
+                </div>
+                <p style="margin-bottom: 15px;">Painel visual desenvolvido para proteger senhas, CPFs, documentos e anotações sensíveis contra olhares curiosos através de algoritmos de deslocamento de caracteres.</p>
 
-                <div class="painel-container">
+                <div class="curiosidade-box">
+                    <strong>💡 Como funciona por baixo do capô?</strong>
+                    <p>O sistema utiliza uma variação moderna da clássica <strong>Cifra de César</strong> aplicada aos 95 caracteres imprimíveis da tabela ASCII (espaço ao til). A fórmula matemática usada é: <code>C = (P + K) mod 95</code>, onde <strong>P</strong> é o código original da letra e <strong>K</strong> é a chave secreta gerada aleatoriamente.</p>
+                </div>
+
+                <div class="painel-container" style="margin-top: 20px;">
                     <div class="tabs">
                         <button class="tab-btn active" onclick="abrirAbaLock(event, 'aba-proteger')">Proteger Informação</button>
                         <button class="tab-btn" onclick="abrirAbaLock(event, 'aba-revelar')">Revelar Informação</button>
@@ -53,46 +84,46 @@
                     <!-- ABA 1: PROTEGER -->
                     <div id="aba-proteger" class="tab-content active">
                         <div class="form-group">
-                            <label for="drop-tipo-dado">Tipo:</label>
+                            <label for="drop-tipo-dado">Tipo de Informação:</label>
                             <select id="drop-tipo-dado">
-                                <option value="1">Senha</option>
-                                <option value="2">Documento</option>
-                                <option value="3">Anotação</option>
+                                <option value="1">Senha Bancária / App</option>
+                                <option value="2">Documento (CPF / RG)</option>
+                                <option value="3">Anotação Médica / Pessoal</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="txt-dado-proteger">Dado:</label>
-                            <input type="text" id="txt-dado-proteger" placeholder="Senha, CPF, texto...">
+                            <label for="txt-dado-proteger">Dado Original:</label>
+                            <input type="text" id="txt-dado-proteger" placeholder="Digite senha, CPF ou texto...">
                         </div>
 
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="chk-chave-auto" checked>
-                            <label for="chk-chave-auto">Gerar chave automática segura</label>
+                            <label for="chk-chave-auto">Gerar chave automática segura (1 a 25)</label>
                         </div>
 
                         <div class="form-group">
-                            <label for="num-chave-manual">Chave: <span id="valor-slider">3</span></label>
+                            <label for="num-chave-manual">Deslocamento Manual: <span id="valor-slider">3</span> posições</label>
                             <input type="range" id="num-chave-manual" min="1" max="25" value="3" disabled>
                         </div>
 
-                        <button class="btn btn-primary btn-full" onclick="processarProtecao()">🔐 Proteger Dado</button>
+                        <button class="btn btn-primary btn-full" onclick="processarProtecao()">🔐 Proteger Dado Agora</button>
                         <div id="out-proteger" class="output-box"></div>
                     </div>
 
                     <!-- ABA 2: REVELAR -->
                     <div id="aba-revelar" class="tab-content">
                         <div class="form-group">
-                            <label for="txt-dado-revelar">Texto Cripto:</label>
+                            <label for="txt-dado-revelar">Texto Criptografado:</label>
                             <input type="text" id="txt-dado-revelar" placeholder="Cole o texto codificado aqui...">
                         </div>
 
                         <div class="form-group">
-                            <label for="num-chave-revelar">Chave Usada:</label>
+                            <label for="num-chave-revelar">Chave Secreta Usada:</label>
                             <input type="number" id="num-chave-revelar" value="0" min="0" max="25">
                         </div>
 
-                        <button class="btn btn-secondary btn-full" onclick="processarRevelacao()">🔓 Revelar Dado</button>
+                        <button class="btn btn-secondary btn-full" onclick="processarRevelacao()">🔓 Revelar Dado Original</button>
                         <div id="out-revelar" class="output-box"></div>
                     </div>
                 </div>
@@ -100,12 +131,33 @@
 
             <!-- ATIVIDADE 2: EXPLORANDO OS LLMs (LEITURA FACILITADA) -->
             <div class="card">
-                <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
-                <p>Na seção de acessibilidade do nosso projeto, demonstramos na prática como a <strong>Engenharia de Prompt</strong> democratiza o acesso à informação. Ao testar a adaptação de bulas médicas (Losartana Potássica) com Inteligência Artificial, comprovamos que instruções bem planejadas eliminam barreiras de leitura, permitindo que idosos e pessoas com dificuldades cognitivas compreendam seus tratamentos com mais autonomia e segurança.</p>
+                <div class="card-topo">
+                    <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
+                    <span class="tag-tech">Engenharia de Prompt • Inclusão Cognitiva</span>
+                </div>
+                <p>No Brasil, o analfabetismo funcional e o vocabulário médico técnico impedem milhões de idosos de entenderem suas próprias receitas e bulas. Aplicamos <strong>Engenharia de Prompt</strong> baseada nas diretrizes internacionais de <em>Easy-to-Read</em> (Leitura Fácil) para transformar textos clínicos complexos em orientações claras e seguras.</p>
+
+                <div class="pilares-grid">
+                    <div class="pilar-item">
+                        <span>📌</span>
+                        <strong>Frases Curtas</strong>
+                        <small>Uma única ideia por linha para não sobrecarregar a memória.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>🗣️</span>
+                        <strong>Voz Ativa</strong>
+                        <small>Substituição de termos latinos por palavras do dia a dia.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>📋</span>
+                        <strong>Tópicos Claros</strong>
+                        <small>Listas visuais que facilitam a localização rápida de alertas.</small>
+                    </div>
+                </div>
 
                 <div class="bula-comparativo">
                     <div class="bula-box original">
-                        <h4>📄 Texto Original (Complexo)</h4>
+                        <h4>📄 Texto Original da Bula (Losartana Potássica — Complexo)</h4>
                         <p><em>"Este medicamento é contraindicado em pacientes com hipersensibilidade conhecida à substância ativa ou a qualquer um dos excipientes. A coadministração com alisquireno é contraindicada em pacientes com diabetes mellitus ou insuficiência renal (TFG &lt; 60 mL/min/1,73 m²)."</em></p>
                     </div>
 
@@ -117,13 +169,24 @@
                     <div id="resultado-bula" class="bula-box refinado"></div>
                 </div>
 
-                <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Responsabilidade Ética:</strong> Em temas de saúde, a IA não substitui a revisão humana: é dever ético conferir se nenhuma contraindicação vital foi apagada durante a simplificação.</p>
+                <p style="margin-top: 15px; font-size: 0.92rem;"><strong>🛡️ Responsabilidade Ética (Human-in-the-Loop):</strong> Modelos de linguagem podem "alucinar" ou omitir detalhes. Em saúde, a IA atua como tradutora inicial, mas a validação humana é obrigatória para garantir que nenhuma contraindicação grave seja perdida.</p>
             </div>
 
             <!-- ATIVIDADE 3: NUTRITECH (CALCULADORA NUTRICIONAL) -->
             <div class="card">
-                <h3>🥗 Atividade 3: NutriTech — Modelo Computacional Nutricional</h3>
-                <p style="margin-bottom: 15px;">Nesta etapa, unimos programação e matemática para democratizar o acesso à informação nutricional. O sistema calcula automaticamente os nutrientes das refeições, ajudando idosos, diabéticos e hipertensos a tomarem decisões mais seguras e autônomas sobre sua alimentação.</p>
+                <div class="card-topo">
+                    <h3>🥗 Atividade 3: NutriTech — Modelo Computacional Nutricional</h3>
+                    <span class="tag-tech">Regra de Três Proporcional • Saúde Preventiva</span>
+                </div>
+                <p style="margin-bottom: 12px;">Baseado na <strong>Tabela Brasileira de Composição de Alimentos (TACO/UNICAMP)</strong>, o NutriTech aplica proporção matemática em tempo real ($Valor = \frac{Nutriente_{100g} \times Peso}{100}$) para alertar sobre picos glicêmicos e excesso de sódio em uma única refeição.</p>
+
+                <div class="curiosidade-box" style="margin-bottom: 16px;">
+                    <strong>🩺 Parâmetros Clínicos Utilizados nos Alertas:</strong>
+                    <ul style="margin-top: 6px;">
+                        <li><strong>Hipertensão (OMS):</strong> O consumo máximo recomendado é de 2.000 mg de sódio/dia. Uma refeição acima de <strong>600 mg</strong> já aciona o alerta vermelho.</li>
+                        <li><strong>Diabetes (SBD):</strong> Refeições principais acima de <strong>55 g de carboidratos</strong> exigem atenção redobrada ao índice glicêmico.</li>
+                    </ul>
+                </div>
 
                 <div class="nutri-widget">
                     <div class="nutri-header-verde">
@@ -176,33 +239,33 @@
         <section id="mod-robotica" class="modulo">
             <header class="section-header">
                 <h1>🤖 Robótica Inclusiva: Soluções Tecnológicas para a Autonomia e Qualidade de Vida</h1>
-                <p>Integração entre Ciência, Tecnologia e Inteligência Artificial na promoção da acessibilidade.</p>
+                <p>Prototipagem com microcontroladores, hardware acessível e desenho universal (ABNT NBR 9050).</p>
             </header>
 
             <div class="card-grid">
                 <div class="card">
                     <h3>🔬 A Ciência como Fundamento</h3>
-                    <p>Fornece o entendimento das capacidades e limitações humanas (visão, audição, tato) e os princípios da física e eletrônica, estabelecendo as diretrizes do desenho universal.</p>
+                    <p>Estuda a fisiologia sensorial humana (visão, audição e tato) e a <strong>persistência retiniana</strong>, estabelecendo as bases do Desenho Universal para que nenhum usuário seja excluído.</p>
                 </div>
                 <div class="card">
                     <h3>⚙️ A Tecnologia como Aplicação</h3>
-                    <p>Concretiza o conhecimento em dispositivos como Arduino, displays LCD/OLED, matrizes de LED e buzzers, criando sistemas multissensoriais para pessoas cegas e surdas.</p>
+                    <p>Concretiza o projeto usando microcontroladores (Arduino Uno/ESP32), barramentos I2C, matrizes MAX7219 e transdutores piezoelétricos (buzzers) de baixo custo.</p>
                 </div>
                 <div class="card">
                     <h3>🧠 A IA como Catalisadora</h3>
-                    <p>Viabiliza conversão de dados em tempo real (texto em voz, tradução) e otimiza a ideação, permitindo simular cenários de usabilidade de forma responsável.</p>
+                    <p>Permite conversão de texto em fala (TTS), reconhecimento de comandos de voz e validação prévia de fluxos de acessibilidade antes da montagem física.</p>
                 </div>
             </div>
 
             <!-- Simulador Interativo de Robótica (3 Recursos) -->
             <div class="simulador-box">
                 <h3>🎛️ Simulador Multissensorial (Matriz de LEDs, Código Morse & Display LCD/OLED)</h3>
-                <p>Teste na prática como os sinais visuais, sonoros e textuais funcionam em um totem acessível:</p>
+                <p>Interaja com os três atuadores usados no nosso protótipo de totem inclusivo:</p>
                 
                 <div class="simulador-controles">
                     <!-- COLUNA 1: MATRIZ DE LEDS -->
                     <div class="sim-coluna">
-                        <h4>1. Matriz de LEDs (Símbolos)</h4>
+                        <h4>1. Matriz de LEDs 8x8</h4>
                         <div class="matriz-display" id="matriz-led">😊</div>
                         <p id="matriz-legenda" class="legenda">Alegria (Rosto sorridente)</p>
                         <div class="btn-group">
@@ -246,6 +309,32 @@
                 </div>
             </div>
 
+            <!-- Arquitetura de Hardware -->
+            <div class="card">
+                <div class="card-topo">
+                    <h3>🔌 Arquitetura de Hardware & Pinagem (Arduino Uno)</h3>
+                    <span class="tag-tech">Eletrônica Embarcada • Baixo Custo</span>
+                </div>
+                <p style="margin-bottom: 12px;">Para tirar o protótipo do papel na escola ou em espaços públicos, cada componente se conecta ao microcontrolador de forma modular:</p>
+                <div class="pilares-grid">
+                    <div class="pilar-item">
+                        <span>📟</span>
+                        <strong>Display I2C (Pinos A4/A5)</strong>
+                        <small>Usa apenas 2 fios de dados (SDA e SCL), economizando portas do Arduino.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>🚨</span>
+                        <strong>Buzzer + LED (Pinos D8/D9)</strong>
+                        <small>Onda sonora de 750 Hz sincronizada com pulso luminoso de alto brilho.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>🔳</span>
+                        <strong>Matriz MAX7219 (Pinos D10-12)</strong>
+                        <small>Varredura rápida (multiplexação) que acende 64 LEDs sem piscar aos olhos.</small>
+                    </div>
+                </div>
+            </div>
+
             <!-- Análise Técnica Específica do Display (LCD / OLED) -->
             <div class="card">
                 <h3>🖥️ Análise do Display (LCD / OLED) na Acessibilidade</h3>
@@ -267,7 +356,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Contraste e Legibilidade</strong></td>
-                                <td>Telas OLED (texto branco em fundo preto) facilitam a leitura sob luz solar.</td>
+                                <td>Telas OLED (texto branco/azul em fundo preto) facilitam a leitura sob luz solar.</td>
                                 <td>Fontes pequenas ou baixo contraste dificultam a leitura para idosos ou pessoas com baixa visão.</td>
                             </tr>
                             <tr>
@@ -328,18 +417,18 @@
 
             <div class="card-grid">
                 <div class="card destaque-borda">
-                    <h3>💡 Proposta de Melhoria: Display Híbrido Multissensorial</h3>
+                    <h3>💡 Proposta de Melhoria: Totem Híbrido ABNT NBR 9050</h3>
                     <ul>
                         <li><strong>Síntese de Voz (DFPlayer Mini):</strong> Reproduz em áudio falado toda mensagem exibida na tela.</li>
                         <li><strong>Retorno Háptico (Vibracall):</strong> Motor de vibração sob o botão que confirma o acionamento pelo tato.</li>
-                        <li><strong>Identificação Tátil:</strong> Botão com relevo e caracteres em Braille ("SOS" / "AJUDA").</li>
-                        <li><strong>Validação:</strong> Teste de transmissão cega com voluntários vendados buscando 100% de autonomia tátil/auditiva.</li>
+                        <li><strong>Altura e Alcance Universal:</strong> Instalação entre 0,80 m e 1,20 m do piso para cadeirantes e crianças, com botões em Braille ("SOS").</li>
+                        <li><strong>Validação:</strong> Teste cego com voluntários vendados buscando 100% de autonomia tátil/auditiva.</li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3>🛡️ Uso Responsável da IA e Conclusão</h3>
-                    <p>A IA (Gemini) foi utilizada para organizar tópicos e tabelas, mas passou por rigorosa verificação humana (norma <strong>ABNT NBR 9050</strong> e datasheets de componentes).</p>
+                    <p>A IA foi utilizada para organizar tópicos e tabelas, mas passou por rigorosa verificação humana (norma <strong>ABNT NBR 9050</strong> e datasheets de componentes).</p>
                     <p style="margin-top: 10px;"><strong>Correção Crítica:</strong> Identificamos que o Código Morse puro não basta em locais públicos porque a população geral não sabe decodificá-lo, exigindo tradução automática no microcontrolador.</p>
                 </div>
             </div>
@@ -351,22 +440,21 @@
         <section id="mod-fisica" class="modulo">
             <header class="section-header">
                 <h1>🔊 Ciência do Som: Audição, Acessibilidade e Qualidade de Vida</h1>
-                <p>Investigação acústica no ambiente escolar e propostas de controle de poluição sonora.</p>
+                <p>Investigação acústica experimental no ambiente escolar e propostas de mitigação sonora.</p>
             </header>
 
             <div class="card-grid">
                 <div class="card">
                     <h3>🌊 Natureza da Onda Sonora</h3>
-                    <p>O som é uma onda <strong>mecânica e longitudinal</strong> gerada por vibrações. Precisa de um meio material (sólido, líquido ou gasoso) para se propagar — não se propaga no vácuo.</p>
+                    <p>O som é uma onda <strong>mecânica, longitudinal e tridimensional</strong>. No ar a 20 °C, viaja a aproximadamente <strong>343 m/s</strong>, mas em meios sólidos (como paredes e metais) supera 5.000 m/s.</p>
                 </div>
                 <div class="card">
-                    <h3>🎵 Frequência e Intensidade</h3>
-                    <p><strong>Frequência (Hz):</strong> Define se o som é grave (baixa freq.) ou agudo (alta freq.). Faixa humana: <strong>20 Hz a 20.000 Hz</strong>.<br>
-                    <strong>Decibéis (dB):</strong> Escala logarítmica; cada +3 dB dobra a energia sonora.</p>
+                    <h3>🎵 Escala Logarítmica (dB)</h3>
+                    <p>A intensidade segue a equação <code>β = 10 · log10(I / I0)</code>. Como a escala é logarítmica, um salto de <strong>70 dB para 80 dB</strong> representa <strong>10 vezes mais intensidade sonora</strong>!</p>
                 </div>
                 <div class="card">
-                    <h3>🩺 Saúde Auditiva (OMS)</h3>
-                    <p>Exposição contínua acima de <strong>85 dB</strong> causa perda auditiva irreversível (PAIR). Acima de <strong>120 dB</strong> atinge o limiar da dor. O excesso de ruído libera cortisol e adrenalina.</p>
+                    <h3>🩺 Impacto Neurosensorial (OMS)</h3>
+                    <p>Acima de <strong>85 dB</strong> ocorre lesão nas células ciliadas da cóclea (PAIR). Além disso, ruídos constantes elevam o <strong>cortisol</strong>, prejudicando a concentração e sobrecarregando alunos neurodivergentes (TEA).</p>
                 </div>
             </div>
 
@@ -378,6 +466,31 @@
                     <input type="range" id="slider-db" min="35" max="125" value="68" oninput="atualizarSemaforo(this.value)">
                     <div class="semaforo-visor" id="visor-db">
                         <span id="valor-db">68 dB</span> — <span id="status-db">Seguro e Confortável (Biblioteca)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fenômenos Acústicos na Escola -->
+            <div class="card">
+                <div class="card-topo">
+                    <h3>🏛️ Por que a Quadra Fechada atingiu 84 dB? (Fenômenos Físicos)</h3>
+                    <span class="tag-tech">Acústica Arquitetônica • Reverberação</span>
+                </div>
+                <div class="pilares-grid">
+                    <div class="pilar-item">
+                        <span>🔁</span>
+                        <strong>Reverberação</strong>
+                        <small>Paredes lisas de alvenaria refletem as ondas sonoras várias vezes, somando o som direto ao eco.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>📢</span>
+                        <strong>Efeito Lombard</strong>
+                        <small>Quanto mais barulho há na sala, mais alto as pessoas falam inconscientemente para se ouvirem.</small>
+                    </div>
+                    <div class="pilar-item">
+                        <span>🧱</span>
+                        <strong>Absorção Acústica</strong>
+                        <small>Materiais porosos (espuma, cortinas, madeira) convertem energia sonora em calor, reduzindo o eco.</small>
                     </div>
                 </div>
             </div>
@@ -446,14 +559,14 @@
 
             <!-- Análise dos Dados -->
             <div class="card">
-                <h3>🔎 Análise dos Resultados Coletados</h3>
+                <h3>🔎 Análise Científica dos Resultados Coletados</h3>
                 <div class="qa-item">
                     <strong>1. Maior e menor valor indicado:</strong>
                     <p>O maior foi na <strong>quadra fechada (84 dB, pico de 85 dB)</strong> durante a aula de Educação Física. O menor foi no <strong>banheiro vazio (66 dB)</strong>.</p>
                 </div>
                 <div class="qa-item">
                     <strong>2. Situações que explicam as diferenças:</strong>
-                    <p>Quantidade de pessoas, conversas, gritos, movimentação intensa e reverberação (eco) em locais fechados frente a ambientes vazios.</p>
+                    <p>Densidade de pessoas, conversas simultâneas, gritos, movimentação intensa e reverberação em ambientes fechados sem tratamento acústico frente a locais vazios.</p>
                 </div>
                 <div class="qa-item">
                     <strong>3. Mudança conforme horário e movimentação:</strong>
@@ -461,11 +574,11 @@
                 </div>
                 <div class="qa-item">
                     <strong>4. Limitações da investigação e uso do aplicativo:</strong>
-                    <p>Poucas medições em horários restritos. Aplicativos de celular dependem da qualidade do microfone e não possuem calibração profissional, servindo apenas como estimativa.</p>
+                    <p>Amostragem pontual em horários restritos. Decibelímetros de smartphone dependem da curva de resposta do microfone MEMS e não possuem calibração IEC 61672 profissional, servindo como indicador educativo.</p>
                 </div>
                 <div class="qa-item">
                     <strong>5. Mudanças para reduzir o desconforto sonoro:</strong>
-                    <p>Instalação de materiais absorventes (cortinas, tapetes, painéis acústicos), organização das atividades e controle do volume das conversas.</p>
+                    <p>Instalação de painéis absorventes (espuma acústica ou cortiça), ponteiras de borracha nas cadeiras, cortinas espessas e gestão do fluxo de atendimento.</p>
                 </div>
             </div>
 
@@ -473,8 +586,8 @@
                 <div class="card destaque-borda">
                     <h3>🏫 Propostas Práticas de Melhoria na Escola</h3>
                     <ol>
-                        <li><strong>Tratamento Acústico Básico:</strong> Placas absorventes na quadra fechada e ponteiras de feltro/borracha nos pés das cadeiras das salas de aula para reduzir reverberação e atrito.</li>
-                        <li><strong>Semáforo do Som e Fluxo:</strong> Sinalização luminosa na Sala da Pedagogia (que marcou 77 dB) e Biblioteca para preservar o silêncio e proteger alunos com hipersensibilidade auditiva.</li>
+                        <li><strong>Tratamento Acústico Sustentável:</strong> Painéis feitos com caixas de ovos/cortiça ou placas de lã de PET na quadra fechada e ponteiras de feltro nos pés das cadeiras.</li>
+                        <li><strong>Semáforo Eletrônico do Som:</strong> Sensor de som ligado a um Arduino que acende luz amarela/vermelha na Biblioteca e Pedagogia (77 dB) quando o volume passa do limite saudável.</li>
                     </ol>
                 </div>
 
@@ -482,6 +595,47 @@
                     <h3>🤖 Uso Crítico da Inteligência Artificial</h3>
                     <p>A IA auxiliou na estruturação dos tópicos e revisão textual. Nenhum dado pessoal de alunos foi exposto, e todos os parâmetros científicos (limites da OMS e faixa audível) foram validados em materiais didáticos de Física e Biologia.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             DESAFIO INTERATIVO FINAL (QUIZ RÁPIDO PARA VISITANTES)
+             ========================================================= -->
+        <section class="card quiz-card">
+            <div class="card-topo">
+                <h3>🎯 Desafio Rápido: Teste seus Conhecimentos do Projeto</h3>
+                <span class="tag-tech">Interatividade • Fixação</span>
+            </div>
+            <p style="margin-bottom: 15px;">Responda às perguntas abaixo para testar o que você explorou nas três áreas:</p>
+            
+            <div class="quiz-item">
+                <p><strong>1. Na NutriTech, a partir de quanto sódio em uma única refeição o sistema dispara o alerta vermelho para hipertensos?</strong></p>
+                <div class="quiz-opcoes">
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q1')">200 mg</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q1')">Acima de 600 mg</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q1')">2.500 mg</button>
+                </div>
+                <p id="q1-feedback" class="quiz-feedback"></p>
+            </div>
+
+            <div class="quiz-item">
+                <p><strong>2. Por que um totem acessível não deve depender APENAS de um Display LCD com texto?</strong></p>
+                <div class="quiz-opcoes">
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q2')">Porque o LCD gasta muita bateria</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q2')">Porque exclui pessoas cegas ou não alfabetizadas sem áudio/Braille</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q2')">Porque não funciona dentro de escolas</button>
+                </div>
+                <p id="q2-feedback" class="quiz-feedback"></p>
+            </div>
+
+            <div class="quiz-item">
+                <p><strong>3. Qual local da escola registrou o maior pico de ruído (84 dB / máx. 85 dB) na investigação acústica?</strong></p>
+                <div class="quiz-opcoes">
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q3')">Biblioteca Vazia</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, false, 'q3')">Sala da Pedagogia</button>
+                    <button class="btn-mini" onclick="verificarQuiz(this, true, 'q3')">Aula de Educação Física na Quadra Fechada</button>
+                </div>
+                <p id="q3-feedback" class="quiz-feedback"></p>
             </div>
         </section>
 

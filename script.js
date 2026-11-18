@@ -392,3 +392,31 @@ function atualizarSemaforo(db) {
         statusSpan.textContent = 'LIMIAR DA DOR: Dano auditivo imediato!';
     }
 }
+
+/* =========================================================
+   7. DESAFIO INTERATIVO FINAL (QUIZ RÁPIDO)
+   ========================================================= */
+function verificarQuiz(botao, acertou, idPergunta) {
+    const feedback = document.getElementById(idPergunta + '-feedback');
+    const grupo = botao.parentElement;
+
+    grupo.querySelectorAll('.btn-mini').forEach(b => {
+        b.style.backgroundColor = '';
+        b.style.color = '';
+        b.style.borderColor = '';
+    });
+
+    if (acertou) {
+        botao.style.backgroundColor = '#16a34a';
+        botao.style.color = '#ffffff';
+        botao.style.borderColor = '#16a34a';
+        feedback.style.color = '#15803d';
+        feedback.textContent = '✅ Resposta correta! Excelente observação.';
+    } else {
+        botao.style.backgroundColor = '#dc2626';
+        botao.style.color = '#ffffff';
+        botao.style.borderColor = '#dc2626';
+        feedback.style.color = '#b91c1c';
+        feedback.textContent = '❌ Ops! Dica: confira os detalhes nos cartões acima e tente de novo.';
+    }
+}
