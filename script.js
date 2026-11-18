@@ -1,5 +1,5 @@
 /* =========================================================
-   0. RECURSOS DE ACESSIBILIDADE (FONTE, TEMA, CONTRASTE, VOZ)
+   0. RECURSOS DE ACESSIBILIDADE (FONTE, CONTRASTE INVERSO, VOZ)
    ========================================================= */
 let tamanhoFonteAtual = 16;
 
@@ -13,45 +13,49 @@ function resetarFonte() {
     document.documentElement.style.fontSize = '16px';
 }
 
-function alternarTemaClaro() {
-    document.body.classList.remove('alto-contraste');
-    document.body.classList.toggle('tema-claro');
-    const btn = document.getElementById('btn-tema');
-    btn.textContent = document.body.classList.contains('tema-claro') ? '🌙 Modo Escuro' : '☀️ Modo Claro';
-}
-
-function alternarAltoContraste() {
-    document.body.classList.remove('tema-claro');
-    document.body.classList.toggle('alto-contraste');
+function alternarContrasteInverso() {
+    document.body.classList.toggle('contraste-inverso');
+    const btn = document.getElementById('btn-contraste');
+    if (document.body.classList.contains('contraste-inverso')) {
+        btn.textContent = '☀️ Contraste Normal';
+    } else {
+        btn.textContent = '🌓 Inverter Contraste';
+    }
 }
 
 function lerPagina() {
     const btnVoz = document.getElementById('btn-voz');
-    if (window.speechSynthesis.speaking) {
-        window.speechSynthesis.cancel();
-        btnVoz.textContent = '🔊 Ouvir Texto';
-        return;
+    if ('speechSynthesis' in window) {
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            btnVoz.textContent = '🔊 Ouvir Texto';
+            return;
+        }
+
+        const moduloAtivo = document.querySelector('.modulo.active');
+        const texto = moduloAtivo.innerText;
+        const fala = new SpeechSynthesisUtterance(texto);
+        fala.lang = 'pt-BR';
+        
+        fala.onend = () => {
+            btnVoz.textContent = '🔊 Ouvir Texto';
+        };
+
+        btnVoz.textContent = '⏹️ Parar Leitura';
+        window.speechSynthesis.speak(fala);
+    } else {
+        alert('Seu navegador não suporta leitura de voz automática.');
     }
-
-    const moduloAtivo = document.querySelector('.modulo.active');
-    const texto = moduloAtivo.innerText;
-    const fala = new SpeechSynthesisUtterance(texto);
-    fala.lang = 'pt-BR';
-    
-    fala.onend = () => {
-        btnVoz.textContent = '🔊 Ouvir Texto';
-    };
-
-    btnVoz.textContent = '⏹️ Parar Leitura';
-    window.speechSynthesis.speak(fala);
 }
 
 /* =========================================================
    1. NAVEGAÇÃO ENTRE MÓDULOS DO PORTAL
    ========================================================= */
 function mudarModulo(evento, idModulo) {
-    window.speechSynthesis.cancel();
-    document.getElementById('btn-voz').textContent = '🔊 Ouvir Texto';
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        document.getElementById('btn-voz').textContent = '🔊 Ouvir Texto';
+    }
 
     document.querySelectorAll('.modulo').forEach(mod => mod.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -195,7 +199,7 @@ function alternarTesteBula(numeroTeste) {
 alternarTesteBula(2);
 
 /* =========================================================
-   4. ATIVIDADE 3: NUTRITECH (MODELO NUTRICIONAL)
+   4. ATIVIDADE 3: NUTRITECH (CALCULADORA NUTRICIONAL)
    ========================================================= */
 const tabelaAlimentos = {
     "Arroz branco cozido": { calorias: 130, carboidratos: 28.0, proteinas: 2.7, fibras: 1.6, sodio: 1 },
@@ -239,7 +243,7 @@ function atualizarNutriTech() {
     const perfil = document.getElementById('nutri-perfil').value;
 
     if (refeicao.length === 0) {
-        saida.innerHTML = `<p>Selecione um alimento acima e clique em <strong>Adicionar ao Prato</strong>.</p>`;
+        saida.innerHTML = `<p style="color: #666; margin: 0;">Selecione um alimento acima e clique em <b>Adicionar</b>.</p>`;
         return;
     }
 
@@ -249,20 +253,20 @@ function atualizarNutriTech() {
     const fib = refeicao.reduce((acc, x) => acc + x.fib, 0);
     const sod = refeicao.reduce((acc, x) => acc + x.sod, 0);
 
-    const listaHtml = refeicao.map(x => `<li><strong>${x.nome}</strong> (${x.g}g) — ${x.cal.toFixed(0)} kcal</li>`).join('');
+    const listaHtml = refeicao.map(x => `<li><b>${x.nome}</b> (${x.g}g) — ${x.cal.toFixed(0)} kcal</li>`).join('');
 
-    let alertaHtml = `<div class="nutri-alerta ok">✅ <strong>Refeição equilibrada!</strong> Os níveis de sódio e carboidratos estão dentro do limite seguro.</div>`;
+    let alertaHtml = `<div class="alerta-nutri-ok">✅ <b>Refeição equilibrada!</b></div>`;
     if (sod > 600) {
-        alertaHtml = `<div class="nutri-alerta perigo">⚠️ <strong>ALERTA (Hipertensão):</strong> Sódio elevado (${sod.toFixed(0)} mg). Reduza alimentos processados ou salgados.</div>`;
+        alertaHtml = `<div class="alerta-nutri-sod">⚠️ <b>ALERTA (Hipertensão):</b> Sódio elevado (${sod.toFixed(0)} mg).</div>`;
     } else if (carb > 55) {
-        alertaHtml = `<div class="nutri-alerta aviso">⚠️ <strong>ALERTA (Diabetes):</strong> Carboidratos elevados (${carb.toFixed(1)} g). Atenção ao índice glicêmico.</div>`;
+        alertaHtml = `<div class="alerta-nutri-carb">⚠️ <b>ALERTA (Diabetes):</b> Carboidratos elevados (${carb.toFixed(1)} g).</div>`;
     }
 
     saida.innerHTML = `
-        <h4 style="color: var(--highlight); margin-bottom: 8px;">🍽️ Prato Atual (${perfil})</h4>
-        <ul style="margin-bottom: 12px;">${listaHtml}</ul>
+        <h4>🍽️ Prato Atual (${perfil})</h4>
+        <ul>${listaHtml}</ul>
         <div class="table-responsive">
-            <table>
+            <table class="nutri-tabela">
                 <thead>
                     <tr>
                         <th>Calorias</th>
@@ -274,19 +278,20 @@ function atualizarNutriTech() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>${cal.toFixed(0)} kcal</strong></td>
-                        <td><strong>${carb.toFixed(1)} g</strong></td>
-                        <td><strong>${prot.toFixed(1)} g</strong></td>
-                        <td><strong>${fib.toFixed(1)} g</strong></td>
-                        <td><strong>${sod.toFixed(0)} mg</strong></td>
+                        <td><b>${cal.toFixed(0)} kcal</b></td>
+                        <td><b>${carb.toFixed(1)} g</b></td>
+                        <td><b>${prot.toFixed(1)} g</b></td>
+                        <td><b>${fib.toFixed(1)} g</b></td>
+                        <td><b>${sod.toFixed(0)} mg</b></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         ${alertaHtml}
-        <p style="font-size: 0.85rem; margin-top: 10px;">ℹ️ <em>Aviso ético: Ferramenta educativa, não substitui orientação médica ou nutricional.</em></p>
+        <p class="aviso-etico-nutri">ℹ️ <i>Aviso ético: Ferramenta educativa, não substitui orientação médica ou nutricional.</i></p>
     `;
 }
+atualizarNutriTech();
 
 /* =========================================================
    5. SIMULADORES DE ROBÓTICA (MATRIZ LED & CÓDIGO MORSE)
@@ -296,7 +301,6 @@ function mudarMatriz(icone, descricao, cor) {
     const legenda = document.getElementById('matriz-legenda');
     display.textContent = icone;
     display.style.borderColor = cor;
-    display.style.boxShadow = `0 0 15px ${cor}66`;
     legenda.textContent = descricao;
 }
 
@@ -344,13 +348,13 @@ function atualizarSemaforo(db) {
     valorSpan.textContent = `${db} dB`;
 
     if (db <= 70) {
-        visor.style.backgroundColor = '#065f46';
+        visor.style.backgroundColor = '#16a34a';
         statusSpan.textContent = 'Seguro e Confortável (Ex: Biblioteca / Banheiro vazio)';
     } else if (db <= 84) {
-        visor.style.backgroundColor = '#b45309';
+        visor.style.backgroundColor = '#d97706';
         statusSpan.textContent = 'Atenção: Desconforto e Fadiga Mental (Ex: Sala da Pedagogia / Quadra)';
     } else if (db < 120) {
-        visor.style.backgroundColor = '#b91c1c';
+        visor.style.backgroundColor = '#dc2626';
         statusSpan.textContent = 'PERIGO (OMS): Risco de Perda Auditiva Irreversível (PAIR)';
     } else {
         visor.style.backgroundColor = '#7f1d1d';
