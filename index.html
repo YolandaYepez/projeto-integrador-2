@@ -377,7 +377,7 @@
                 </div>
             </div>
 
-            <!-- Arquitetura de Hardware -->
+            <!-- Arquitetura de Hardware (Mesma ordem: 1. Matriz, 2. Buzzer + LED, 3. Display) -->
             <div class="card">
                 <div class="card-topo">
                     <h3>🔌 Arquitetura de Hardware & Pinagem (Arduino Uno)</h3>
@@ -386,63 +386,24 @@
                 <p style="margin-bottom: 12px;">Para tirar o protótipo do papel na escola ou em espaços públicos, cada componente se conecta ao microcontrolador de forma modular:</p>
                 <div class="pilares-grid">
                     <div class="pilar-item">
-                        <span>📟</span>
-                        <strong>Display I2C (Pinos A4/A5)</strong>
-                        <small>Usa apenas 2 fios de dados (SDA e SCL), economizando portas do Arduino.</small>
+                        <span>🔳</span>
+                        <strong>1. Matriz MAX7219 (Pinos D10-12)</strong>
+                        <small>Varredura rápida (multiplexação) que acende 64 LEDs sem piscar aos olhos.</small>
                     </div>
                     <div class="pilar-item">
                         <span>🚨</span>
-                        <strong>Buzzer + LED (Pinos D8/D9)</strong>
+                        <strong>2. Buzzer + LED (Pinos D8/D9)</strong>
                         <small>Onda sonora de 750 Hz sincronizada com pulso luminoso de alto brilho.</small>
                     </div>
                     <div class="pilar-item">
-                        <span>🔳</span>
-                        <strong>Matriz MAX7219 (Pinos D10-12)</strong>
-                        <small>Varredura rápida (multiplexação) que acende 64 LEDs sem piscar aos olhos.</small>
+                        <span>📟</span>
+                        <strong>3. Display I2C (Pinos A4/A5)</strong>
+                        <small>Usa apenas 2 fios de dados (SDA e SCL), economizando portas do Arduino.</small>
                     </div>
                 </div>
             </div>
 
-            <!-- Análise Técnica Específica do Display (LCD / OLED) -->
-            <div class="card">
-                <h3>🖥️ Análise do Display (LCD / OLED) na Acessibilidade</h3>
-                <p style="margin-bottom: 12px;">A mensagem escrita no display garante comunicação visual rápida, silenciosa e direta (essencial para pessoas surdas), mas por atuar em apenas um canal sensorial exige adaptações para acessibilidade universal:</p>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fator</th>
-                                <th>Vantagens</th>
-                                <th>Limitações e Desafios de Acessibilidade</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Tamanho da Tela e Extensão</strong></td>
-                                <td>Telas compactas reduzem o consumo de energia e o custo do projeto.</td>
-                                <td>Telas pequenas (ex.: 16x2) limitam palavras; texto rolante (scrolling) dificulta a leitura para baixa visão.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Contraste e Legibilidade</strong></td>
-                                <td>Telas OLED (texto branco/azul em fundo preto) facilitam a leitura sob luz solar.</td>
-                                <td>Fontes pequenas ou baixo contraste dificultam a leitura para idosos ou pessoas com baixa visão.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Idioma e Pictogramas</strong></td>
-                                <td>Texto no idioma local é direto para a maioria da população.</td>
-                                <td>Falha com estrangeiros ou não alfabetizados; exige ícones universais combinados (ex.: S.O.S.).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Sensorialidade</strong></td>
-                                <td>Comunicação visual limpa e sem poluição sonora.</td>
-                                <td>Inacessível para pessoas cegas se não houver síntese de voz (áudio) ou resposta tátil (Braille/vibração).</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Tabela Comparativa dos Recursos -->
+            <!-- Tabela Comparativa dos 3 Recursos -->
             <div class="card">
                 <h3>📊 Comparação dos Três Recursos Tecnológicos</h3>
                 <div class="table-responsive">
@@ -458,21 +419,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Matriz de LEDs</strong></td>
+                                <td><strong>1. Matriz de LEDs</strong></td>
                                 <td>Símbolos, setas e ícones.<br><em>Sinal: Visual</em></td>
                                 <td>Rotas de evacuação, painéis de senha e semáforos.</td>
                                 <td><strong>Vantagem:</strong> Alta visibilidade à distância.<br><strong>Limitação:</strong> Pouco espaço para textos longos.</td>
                                 <td>Sinais sonoros (bipes) e contraste para daltonismo.</td>
                             </tr>
                             <tr>
-                                <td><strong>Código Morse (LED + Buzzer)</strong></td>
+                                <td><strong>2. Código Morse (LED + Buzzer)</strong></td>
                                 <td>Pulsos curtos (·) e longos (-).<br><em>Sinal: Visual e Sonoro</em></td>
                                 <td>Pedidos de emergência e totens de auxílio rápido.</td>
                                 <td><strong>Vantagem:</strong> Redundância multissensorial.<br><strong>Limitação:</strong> Exige conhecer Morse.</td>
                                 <td>Decodificador automático para texto ou áudio falado.</td>
                             </tr>
                             <tr>
-                                <td><strong>Display (LCD / OLED)</strong></td>
+                                <td><strong>3. Display (LCD / OLED)</strong></td>
                                 <td>Textos completos e status.<br><em>Sinal: Visual detalhado</em></td>
                                 <td>Totens de atendimento, menus e guias passo a passo.</td>
                                 <td><strong>Vantagem:</strong> Alta precisão textual.<br><strong>Limitação:</strong> Ineficaz para cegos ou analfabetos.</td>
