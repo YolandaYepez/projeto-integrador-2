@@ -382,7 +382,7 @@ tr.alerta-seguro { background-color: rgba(16, 185, 129, 0.15); }
 .qa-item strong { color: var(--highlight); display: block; margin-bottom: 4px; }
 
 /* =========================================================
-   ATIVIDADE 2: LEITURA FACILITADA (BULA)
+   ATIVIDADE 2: LEITURA FACILITADA (BULA & SIMULADOR)
    ========================================================= */
 .bula-comparativo { margin-top: 15px; }
 
@@ -398,6 +398,56 @@ tr.alerta-seguro { background-color: rgba(16, 185, 129, 0.15); }
 .bula-box.refinado { border-left: 5px solid #16a34a; }
 .bula-box h4 { color: var(--highlight); margin-bottom: 8px; }
 .bula-controles { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+
+.bula-simulador-box {
+    margin-top: 22px;
+    padding: 18px;
+    background-color: var(--bg-card);
+    border: 2px dashed var(--accent-primary);
+    border-radius: 14px;
+}
+
+.bula-simulador-box textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    font-size: 0.96rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.prompt-badge {
+    display: inline-block;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--highlight);
+    font-size: 0.82rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.analise-critica-box {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent-secondary);
+    border-radius: 6px;
+    font-size: 0.92rem;
+}
+
+.termo-dificil {
+    background-color: rgba(234, 88, 12, 0.18);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    border-bottom: 1px dashed #ea580c;
+    cursor: help;
+}
 
 /* =========================================================
    ATIVIDADE 3: NUTRITECH (CALCULADORA NUTRICIONAL)

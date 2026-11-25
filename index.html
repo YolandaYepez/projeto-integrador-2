@@ -126,14 +126,17 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ATIVIDADE 2: EXPLORANDO OS LLMs (LEITURA FACILITADA) -->
+            
+<!-- ATIVIDADE 2: EXPLORANDO OS LLMs (LEITURA FACILITADA) -->
             <div class="card">
                 <div class="card-topo">
                     <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
                     <span class="tag-tech">Engenharia de Prompt • Inclusão Cognitiva</span>
                 </div>
-                <p>No Brasil, o analfabetismo funcional e o vocabulário médico técnico impedem milhões de idosos de entenderem suas próprias receitas e bulas. Aplicamos <strong>Engenharia de Prompt</strong> baseada nas diretrizes internacionais de <em>Easy-to-Read</em> (Leitura Fácil) para transformar textos clínicos complexos em orientações claras e seguras.</p>
+
+                <p style="margin-bottom: 10px;"><strong>Integrantes da Equipe:</strong> Yolanda Barrera, Emanuelle Machado, Gabriel Mendes, Samira Souza, Wuilmer Rivas</p>
+
+                <p>Na seção de acessibilidade do nosso projeto, demonstramos na prática como a <strong>Engenharia de Prompt</strong> democratiza o acesso à informação. Ao testar a adaptação de bulas médicas com Inteligência Artificial, comprovamos que instruções bem planejadas eliminam barreiras de leitura, permitindo que idosos e pessoas com dificuldades cognitivas compreendam seus tratamentos com mais autonomia e segurança.</p>
 
                 <div class="pilares-grid">
                     <div class="pilar-item">
@@ -143,31 +146,63 @@
                     </div>
                     <div class="pilar-item">
                         <span>🗣️</span>
-                        <strong>Voz Ativa</strong>
-                        <small>Substituição de termos latinos por palavras do dia a dia.</small>
+                        <strong>Linguagem Simples</strong>
+                        <small>Explicação de termos técnicos entre parênteses no dia a dia.</small>
                     </div>
                     <div class="pilar-item">
                         <span>📋</span>
-                        <strong>Tópicos Claros</strong>
-                        <small>Listas visuais que facilitam a localização rápida de alertas.</small>
+                        <strong>Tópicos com Alertas</strong>
+                        <small>Listas visuais que facilitam a localização rápida de riscos.</small>
                     </div>
                 </div>
 
+                <!-- LABORATÓRIO INTERATIVO 1: EXPERIMENTO LOSARTANA POTÁSSICA -->
                 <div class="bula-comparativo">
-                    <div class="bula-box original">
-                        <h4>📄 Texto Original da Bula (Losartana Potássica — Complexo)</h4>
-                        <p><em>"Este medicamento é contraindicado em pacientes com hipersensibilidade conhecida à substância ativa ou a qualquer um dos excipientes. A coadministração com alisquireno é contraindicada em pacientes com diabetes mellitus ou insuficiência renal (TFG &lt; 60 mL/min/1,73 m²)."</em></p>
-                    </div>
+                    <h4 style="color: var(--highlight); margin-bottom: 10px;">🔬 1. Experimento Prático: Bula da Losartana Potássica</h4>
+                    <p style="font-size: 0.92rem; margin-bottom: 12px;">Clique nos botões abaixo para comparar o texto real da bula com os dois testes de comandos (prompts) feitos pela equipe:</p>
 
-                    <div class="bula-controles">
-                        <button class="btn-mini" id="btn-teste1" onclick="alternarTesteBula(1)">Ver Teste 1: Prompt Simples</button>
-                        <button class="btn-mini active" id="btn-teste2" onclick="alternarTesteBula(2)">Ver Teste 2: Prompt Refinado (Acessível)</button>
+                    <div class="bula-controles" role="tablist">
+                        <button class="btn-mini" id="btn-bula-0" onclick="alternarTesteBula(0)">📄 Texto Original (Complexo)</button>
+                        <button class="btn-mini" id="btn-bula-1" onclick="alternarTesteBula(1)">🤖 Teste 1: Prompt Simples</button>
+                        <button class="btn-mini active" id="btn-bula-2" onclick="alternarTesteBula(2)">✨ Teste 2: Prompt Refinado</button>
                     </div>
 
                     <div id="resultado-bula" class="bula-box refinado"></div>
                 </div>
 
-                <p style="margin-top: 15px; font-size: 0.92rem;"><strong>🛡️ Responsabilidade Ética (Human-in-the-Loop):</strong> Modelos de linguagem podem "alucinar" ou omitir detalhes. Em saúde, a IA atua como tradutora inicial, mas a validação humana é obrigatória para garantir que nenhuma contraindicação grave seja perdida.</p>
+                <!-- LABORATÓRIO INTERATIVO 2: SIMULADOR DE LEITURA FACILITADA -->
+                <div class="bula-simulador-box">
+                    <h4 style="color: var(--highlight); margin-bottom: 8px;">🧪 2. Experimente Você Mesmo: Conversor de Leitura Facilitada</h4>
+                    <p style="font-size: 0.92rem; margin-bottom: 12px;">Escolha outro exemplo de texto médico complexo (ou digite o seu) e compare como a IA responde com <strong>Prompt Simples</strong> versus <strong>Prompt Refinado</strong>:</p>
+
+                    <div class="form-group">
+                        <label for="select-exemplo-bula">Escolha um trecho médico para testar:</label>
+                        <select id="select-exemplo-bula" onchange="carregarExemploBula()">
+                            <option value="amoxicilina">Bula: Amoxicilina (Antibiótico — Posologia e Contraindicação)</option>
+                            <option value="dipirona">Bula: Dipirona Monoidratada (Reações Adversas)</option>
+                            <option value="omeprazol">Bula: Omeprazol (Modo de Usar)</option>
+                            <option value="livre">✍️ Digitar ou colar outro texto médico...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txt-bula-usuario">Texto Técnico Original:</label>
+                        <textarea id="txt-bula-usuario" rows="3" placeholder="Cole aqui um trecho de bula ou receita médica..."></textarea>
+                    </div>
+
+                    <div class="bula-controles">
+                        <button class="btn btn-secondary" onclick="simularPromptBula('simples')">🤖 Simular Prompt Simples</button>
+                        <button class="btn btn-primary" onclick="simularPromptBula('refinado')">✨ Aplicar Leitura Facilitada (Refinado)</button>
+                    </div>
+
+                    <div id="saida-simulador-bula" class="bula-box refinado" style="display: none; margin-top: 12px;"></div>
+                </div>
+
+                <!-- PENSAMENTO CRÍTICO E RESPONSABILIDADE ÉTICA -->
+                <div class="curiosidade-box" style="margin-top: 18px;">
+                    <strong>🛡️ Pensamento Crítico e Responsabilidade Ética:</strong>
+                    <p style="margin-top: 6px;">A estruturação correta do comando (Engenharia de Prompt) foi decisiva para transformar um texto técnico excludente em uma orientação segura. Porém, em temas de saúde, <strong>a IA não substitui a revisão humana</strong>: é dever ético da equipe conferir se nenhuma informação vital (como a contraindicação para diabéticos) foi apagada durante a simplificação.</p>
+                </div>
             </div>
 
             <!-- ATIVIDADE 3: NUTRITECH (CALCULADORA NUTRICIONAL) -->
