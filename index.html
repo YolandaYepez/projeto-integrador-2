@@ -292,48 +292,7 @@
         </p>
     </div>
 </div>
-                <!-- LABORATÓRIO INTERATIVO 1: EXPERIMENTO LOSARTANA POTÁSSICA -->
-                <div class="bula-comparativo">
-                    <h4 style="color: var(--highlight); margin-bottom: 10px;">🔬 1. Experimento Prático: Bula da Losartana Potássica</h4>
-                    <p style="font-size: 0.92rem; margin-bottom: 12px;">Clique nos botões abaixo para comparar o texto real da bula com os dois testes de comandos (prompts) feitos pela equipe:</p>
-
-                    <div class="bula-controles" role="tablist">
-                        <button class="btn-mini" id="btn-bula-0" onclick="alternarTesteBula(0)">📄 Texto Original (Complexo)</button>
-                        <button class="btn-mini" id="btn-bula-1" onclick="alternarTesteBula(1)">🤖 Teste 1: Prompt Simples</button>
-                        <button class="btn-mini active" id="btn-bula-2" onclick="alternarTesteBula(2)">✨ Teste 2: Prompt Refinado</button>
-                    </div>
-
-                    <div id="resultado-bula" class="bula-box refinado"></div>
-                </div>
-
-                <!-- LABORATÓRIO INTERATIVO 2: SIMULADOR DE LEITURA FACILITADA -->
-                <div class="bula-simulador-box">
-                    <h4 style="color: var(--highlight); margin-bottom: 8px;">🧪 2. Experimente Você Mesmo: Conversor de Leitura Facilitada</h4>
-                    <p style="font-size: 0.92rem; margin-bottom: 12px;">Escolha outro exemplo de texto médico complexo (ou digite o seu) e compare como a IA responde com <strong>Prompt Simples</strong> versus <strong>Prompt Refinado</strong>:</p>
-
-                    <div class="form-group">
-                        <label for="select-exemplo-bula">Escolha um trecho médico para testar:</label>
-                        <select id="select-exemplo-bula" onchange="carregarExemploBula()">
-                            <option value="amoxicilina">Bula: Amoxicilina (Antibiótico — Posologia e Contraindicação)</option>
-                            <option value="dipirona">Bula: Dipirona Monoidratada (Reações Adversas)</option>
-                            <option value="omeprazol">Bula: Omeprazol (Modo de Usar)</option>
-                            <option value="livre">✍️ Digitar ou colar outro texto médico...</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txt-bula-usuario">Texto Técnico Original:</label>
-                        <textarea id="txt-bula-usuario" rows="3" placeholder="Cole aqui um trecho de bula ou receita médica..."></textarea>
-                    </div>
-
-                    <div class="bula-controles">
-                        <button class="btn btn-secondary" onclick="simularPromptBula('simples')">🤖 Simular Prompt Simples</button>
-                        <button class="btn btn-primary" onclick="simularPromptBula('refinado')">✨ Aplicar Leitura Facilitada (Refinado)</button>
-                    </div>
-
-                    <div id="saida-simulador-bula" class="bula-box refinado" style="display: none; margin-top: 12px;"></div>
-                </div>
-
+           
                 <!-- PENSAMENTO CRÍTICO E RESPONSABILIDADE ÉTICA -->
                 <div class="curiosidade-box" style="margin-top: 18px;">
                     <strong>🛡️ Pensamento Crítico e Responsabilidade Ética:</strong>
