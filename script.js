@@ -162,41 +162,276 @@ function copiarTexto(idElemento) {
 }
 
 /* =========================================================
-   3. ATIVIDADE 2: COMPARADOR DE PROMPTS (LEITURA FACILITADA)
+   3. ATIVIDADE 2: LEITURA FACILITADA
    ========================================================= */
+
+const textoLosartanaOriginal =
+    "Este medicamento é contraindicado em pacientes com " +
+    "hipersensibilidade conhecida à substância ativa ou a " +
+    "qualquer um dos excipientes. A coadministração com " +
+    "alisquireno é contraindicada em pacientes com diabetes " +
+    "mellitus ou insuficiência renal (TFG < 60 mL/min/1,73 m²).";
+
+const textoLosartanaSimples =
+    "O remédio não deve ser usado por quem tem alergia aos " +
+    "seus componentes. Também não pode ser misturado com " +
+    "alisquireno se o paciente tiver diabetes ou problemas " +
+    "graves nos rins.";
+
+const textoLosartanaRefinado = `
+    <h4>✨ Quem NÃO pode tomar este remédio:</h4>
+
+    <ul>
+        <li>
+            <strong>Pessoas com alergia:</strong>
+            Não tome se você já teve reação alérgica
+            a este remédio ou a algum ingrediente da fórmula.
+        </li>
+
+        <li>
+            <strong>Quem tem diabetes ou problema nos rins:</strong>
+            Não tome este remédio junto com medicamentos
+            que contêm alisquireno, um tipo de remédio
+            usado para baixar a pressão.
+        </li>
+    </ul>
+
+    <p>
+        <strong>⚠️ Importante:</strong>
+        Mostre ao médico todos os medicamentos que você usa.
+        Não altere seu tratamento por conta própria.
+    </p>
+`;
+
 function alternarTesteBula(numeroTeste) {
-    const box = document.getElementById('resultado-bula');
-    const btn1 = document.getElementById('btn-teste1');
-    const btn2 = document.getElementById('btn-teste2');
+    const box = document.getElementById("resultado-bula");
+
+    const botoes = [
+        document.getElementById("btn-bula-0"),
+        document.getElementById("btn-bula-1"),
+        document.getElementById("btn-bula-2")
+    ];
+
+    if (!box) return;
+
+    botoes.forEach(botao => {
+        if (botao) botao.classList.remove("active");
+    });
+
+    if (botoes[numeroTeste]) {
+        botoes[numeroTeste].classList.add("active");
+    }
+
+    if (numeroTeste === 0) {
+        box.innerHTML = `
+            <h4>📄 Texto Original (Complexo)</h4>
+            <p>${textoLosartanaOriginal}</p>
+        `;
+    }
 
     if (numeroTeste === 1) {
-        btn1.classList.add('active');
-        btn2.classList.remove('active');
         box.innerHTML = `
             <h4>🤖 Teste 1: Prompt Simples</h4>
-            <p><strong>Comando enviado:</strong> <code>"Resuma este trecho de bula."</code></p>
-            <p style="margin: 10px 0;"><strong>Resposta da IA:</strong> <em>"O remédio não deve ser usado por quem tem alergia aos seus componentes. Também não pode ser misturado com alisquireno se o paciente tiver diabetes ou problemas graves nos rins."</em></p>
-            <p><strong>Análise Crítica:</strong> Embora tenha diminuído o texto, a IA manteve o nome técnico "alisquireno" sem explicar o que é, e o formato em bloco único ainda cansa quem tem déficit de atenção ou baixa escolaridade.</p>
+
+            <p>
+                <strong>Comando enviado:</strong>
+                "Resuma este trecho de bula."
+            </p>
+
+            <p>
+                <strong>Resposta gerada:</strong>
+                ${textoLosartanaSimples}
+            </p>
+
+            <p>
+                <strong>🔎 Análise:</strong>
+                O texto ficou menor, mas manteve o termo
+                "alisquireno" sem explicação e ficou em
+                um único bloco de texto.
+            </p>
         `;
-    } else {
-        btn2.classList.add('active');
-        btn1.classList.remove('active');
+    }
+
+    if (numeroTeste === 2) {
         box.innerHTML = `
-            <h4>✨ Teste 2: Prompt Refinado (Leitura Facilitada)</h4>
-            <p><strong>Comando enviado:</strong> <code>"Atue como um especialista em Leitura Facilitada. Reescreva o texto da bula abaixo para um paciente idoso com baixa escolaridade..."</code></p>
-            <div style="margin: 10px 0; padding: 12px; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-color);">
-                <p><strong>Quem NÃO pode tomar este remédio:</strong></p>
-                <ul style="margin-top: 5px;">
-                    <li><strong>Pessoas com alergia:</strong> Não tome se você já teve reação alérgica a este remédio ou a qualquer ingrediente da fórmula.</li>
-                    <li><strong>Quem tem diabetes ou problema nos rins:</strong> Não tome este remédio junto com medicamentos que contêm <strong>alisquireno</strong> (um tipo de remédio usado para baixar a pressão).</li>
-                </ul>
-                <p style="margin-top: 8px;"><strong>Dica importante:</strong> Sempre mostre ao seu médico todos os remédios que você já toma antes de começar este tratamento.</p>
-            </div>
-            <p><strong>Análise Crítica:</strong> Traduziu termos médicos (<em>hipersensibilidade</em> virou <em>alergia</em>), explicou o que é o medicamento, quebrou o texto em tópicos curtos e adicionou uma orientação prática de segurança.</p>
+            <h4>✨ Teste 2: Prompt Refinado</h4>
+
+            <p>
+                <strong>Comando enviado:</strong>
+                Reescreva o texto em linguagem simples,
+                com frases curtas, explicação de termos
+                médicos e tópicos com alertas visuais.
+            </p>
+
+            ${textoLosartanaRefinado}
+
+            <p>
+                <strong>🔎 Análise:</strong>
+                O resultado usa tópicos, explica termos
+                e destaca informações importantes.
+            </p>
         `;
     }
 }
+
+/* EXEMPLOS PARA O CONVERSOR */
+
+function carregarExemploBula() {
+    const select = document.getElementById("select-exemplo-bula");
+    const campo = document.getElementById("txt-bula-usuario");
+    const saida = document.getElementById("saida-simulador-bula");
+
+    if (!select || !campo) return;
+
+    const exemplos = {
+        losartana: textoLosartanaOriginal,
+
+        amoxicilina:
+            "A administração concomitante deste medicamento " +
+            "com determinadas substâncias pode modificar " +
+            "sua absorção e seus efeitos.",
+
+        dipirona:
+            "Podem ocorrer reações de hipersensibilidade, " +
+            "incluindo manifestações cutâneas e alterações " +
+            "na pressão arterial.",
+
+        livre: ""
+    };
+
+    campo.value = exemplos[select.value] || "";
+
+    if (saida) {
+        saida.style.display = "none";
+        saida.innerHTML = "";
+    }
+}
+
+/* SIMULAÇÃO DE LEITURA FACILITADA */
+
+function simularPromptBula(tipo) {
+    const campo = document.getElementById("txt-bula-usuario");
+    const saida = document.getElementById("saida-simulador-bula");
+
+    if (!campo || !saida) return;
+
+    const texto = campo.value.trim();
+
+    if (!texto) {
+        alert("Digite ou cole um texto primeiro.");
+        return;
+    }
+
+    saida.style.display = "block";
+
+    if (tipo === "simples") {
+        saida.innerHTML = `
+            <h4>🤖 Resultado: Prompt Simples</h4>
+            <p>${escaparHTMLBula(texto)}</p>
+
+            <p>
+                <strong>Análise:</strong>
+                O texto foi apresentado sem uma orientação
+                específica de acessibilidade.
+            </p>
+        `;
+        return;
+    }
+
+    const textoFacilitado = simplificarTextoBula(texto);
+
+    saida.innerHTML = `
+        <h4>✨ Resultado: Leitura Facilitada</h4>
+
+        <p>
+            <strong>Texto adaptado para leitura:</strong>
+        </p>
+
+        <div class="curiosidade-box">
+            ${escaparHTMLBula(textoFacilitado).replace(/\n/g, "<br>")}
+        </div>
+
+        <p>
+            <strong>ℹ️ Como funciona:</strong>
+            Esta é uma simulação local de simplificação.
+            Ela não consulta uma inteligência artificial real.
+        </p>
+    `;
+}
+
+/* SIMPLIFICAÇÃO EDUCATIVA BÁSICA */
+
+function simplificarTextoBula(texto) {
+    let resultado = texto;
+
+    const substituicoes = [
+        [/hipersensibilidade/gi, "alergia"],
+        [/contraindicado/gi, "não deve ser usado"],
+        [/contraindicada/gi, "não deve ser usada"],
+        [/coadministração/gi, "uso junto com outro remédio"],
+        [/administração concomitante/gi, "uso ao mesmo tempo"],
+        [/insuficiência renal/gi, "problema nos rins"],
+        [/diabetes mellitus/gi, "diabetes"],
+        [/substância ativa/gi, "ingrediente que faz efeito"],
+        [/excipientes/gi, "outros ingredientes do remédio"],
+        [/manifestações cutâneas/gi, "reações na pele"],
+        [/absorção/gi, "entrada do medicamento no organismo"]
+    ];
+
+    substituicoes.forEach(([termo, explicacao]) => {
+        resultado = resultado.replace(termo, explicacao);
+    });
+
+    resultado = resultado
+        .replace(/;\s*/g, ".\n")
+        .replace(/\.\s*/g, ".\n")
+        .replace(/\n{2,}/g, "\n")
+        .trim();
+
+    return resultado;
+}
+
+/* EVITA QUE O TEXTO DIGITADO SEJA INTERPRETADO COMO HTML */
+
+function escaparHTMLBula(texto) {
+    return texto
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+/* COPIAR PROMPTS */
+
+function copiarPromptBula(tipo) {
+    let prompt = "";
+
+    if (tipo === "simples") {
+        prompt = "Resuma este trecho de bula.";
+    } else {
+        prompt =
+            "Atue como um especialista em Leitura Facilitada. " +
+            "Reescreva o texto para uma pessoa idosa com baixa " +
+            "escolaridade. Use linguagem simples, frases curtas, " +
+            "explique termos médicos entre parênteses e organize " +
+            "em tópicos com alertas visuais. Não invente informações " +
+            "nem retire contraindicações importantes.";
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(prompt)
+            .then(() => alert("Prompt copiado!"))
+            .catch(() => alert("Não foi possível copiar. Selecione e copie o texto."));
+    } else {
+        alert("Copie o prompt selecionando o texto na página.");
+    }
+}
+
+/* INICIAR COM O TESTE REFINADO */
+
 alternarTesteBula(2);
+carregarExemploBula();
 
 /* =========================================================
    4. ATIVIDADE 3: NUTRITECH (CALCULADORA NUTRICIONAL)

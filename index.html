@@ -127,35 +127,171 @@
                 </div>
             </div>
             
-<!-- ATIVIDADE 2: EXPLORANDO OS LLMs (LEITURA FACILITADA) -->
-            <div class="card">
-                <div class="card-topo">
-                    <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
-                    <span class="tag-tech">Engenharia de Prompt • Inclusão Cognitiva</span>
-                </div>
+<!-- ATIVIDADE 2: EXPLORANDO OS LLMs -->
+<div class="card" id="atividade-2">
+    <div class="card-topo">
+        <h3>🧠 Atividade 2: Explorando os LLMs — Leitura Facilitada</h3>
+        <span class="tag-tech">Engenharia de Prompt • Acessibilidade</span>
+    </div>
 
-                <p style="margin-bottom: 10px;"><strong>Integrantes da Equipe:</strong> Yolanda Barrera, Emanuelle Machado, Gabriel Mendes, Samira Souza, Wuilmer Rivas</p>
+    <p><strong>Integrantes:</strong> Yolanda Barrera, Emanuelle Machado,
+    Gabriel Mendes, Samira Souza e Wuilmer Rivas.</p>
 
-                <p>Na seção de acessibilidade do nosso projeto, demonstramos na prática como a <strong>Engenharia de Prompt</strong> democratiza o acesso à informação. Ao testar a adaptação de bulas médicas com Inteligência Artificial, comprovamos que instruções bem planejadas eliminam barreiras de leitura, permitindo que idosos e pessoas com dificuldades cognitivas compreendam seus tratamentos com mais autonomia e segurança.</p>
+    <p>
+        Nesta atividade, mostramos como a Engenharia de Prompt pode ajudar
+        a transformar textos técnicos em informações mais simples,
+        organizadas e acessíveis.
+    </p>
 
-                <div class="pilares-grid">
-                    <div class="pilar-item">
-                        <span>📌</span>
-                        <strong>Frases Curtas</strong>
-                        <small>Uma única ideia por linha para não sobrecarregar a memória.</small>
-                    </div>
-                    <div class="pilar-item">
-                        <span>🗣️</span>
-                        <strong>Linguagem Simples</strong>
-                        <small>Explicação de termos técnicos entre parênteses no dia a dia.</small>
-                    </div>
-                    <div class="pilar-item">
-                        <span>📋</span>
-                        <strong>Tópicos com Alertas</strong>
-                        <small>Listas visuais que facilitam a localização rápida de riscos.</small>
-                    </div>
-                </div>
+    <div class="pilares-grid">
+        <div class="pilar-item">
+            <span>📌</span>
+            <strong>Frases curtas</strong>
+            <small>Uma ideia por frase.</small>
+        </div>
+        <div class="pilar-item">
+            <span>🗣️</span>
+            <strong>Linguagem simples</strong>
+            <small>Explicação de palavras difíceis.</small>
+        </div>
+        <div class="pilar-item">
+            <span>📋</span>
+            <strong>Organização visual</strong>
+            <small>Tópicos e alertas importantes.</small>
+        </div>
+    </div>
 
+    <!-- COMPARADOR DOS TESTES -->
+    <div class="bula-comparativo">
+        <h4>🔬 1. Experimento: Bula da Losartana Potássica</h4>
+        <p>
+            Selecione uma opção para comparar o texto original
+            com as respostas dos dois prompts.
+        </p>
+
+        <div class="bula-controles">
+            <button class="btn-mini" id="btn-bula-0"
+                onclick="alternarTesteBula(0)">
+                📄 Texto Original
+            </button>
+
+            <button class="btn-mini" id="btn-bula-1"
+                onclick="alternarTesteBula(1)">
+                🤖 Prompt Simples
+            </button>
+
+            <button class="btn-mini active" id="btn-bula-2"
+                onclick="alternarTesteBula(2)">
+                ✨ Prompt Refinado
+            </button>
+        </div>
+
+        <div id="resultado-bula" class="bula-box refinado"></div>
+    </div>
+
+    <!-- CONVERSOR INTERATIVO -->
+    <div class="bula-simulador-box">
+        <h4>🧪 2. Experimente Você Mesmo</h4>
+        <p>
+            Escolha um exemplo ou cole um texto técnico.
+            Depois compare a leitura simples com a leitura facilitada.
+        </p>
+
+        <div class="form-group">
+            <label for="select-exemplo-bula">
+                Escolha um exemplo:
+            </label>
+
+            <select id="select-exemplo-bula"
+                onchange="carregarExemploBula()">
+                <option value="losartana">Losartana — Contraindicações</option>
+                <option value="amoxicilina">Amoxicilina — Exemplo</option>
+                <option value="dipirona">Dipirona — Exemplo</option>
+                <option value="livre">✍️ Meu próprio texto</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="txt-bula-usuario">
+                Texto técnico:
+            </label>
+
+            <textarea id="txt-bula-usuario" rows="5"
+                placeholder="Digite ou cole aqui um texto para testar..."></textarea>
+        </div>
+
+        <div class="bula-controles">
+            <button class="btn btn-secondary"
+                onclick="simularPromptBula('simples')">
+                🤖 Prompt Simples
+            </button>
+
+            <button class="btn btn-primary"
+                onclick="simularPromptBula('refinado')">
+                ✨ Leitura Facilitada
+            </button>
+        </div>
+
+        <div id="saida-simulador-bula"
+            class="bula-box refinado"
+            style="display:none; margin-top:12px;">
+        </div>
+    </div>
+
+    <!-- PROMPTS PARA COPIAR -->
+    <div class="curiosidade-box" style="margin-top:18px;">
+        <strong>📝 Prompts utilizados no experimento</strong>
+
+        <p style="margin-top:8px;">
+            <strong>Prompt simples:</strong>
+        </p>
+
+        <p id="prompt-simples">
+            Resuma este trecho de bula.
+        </p>
+
+        <button class="btn-mini"
+            onclick="copiarPromptBula('simples')">
+            📋 Copiar Prompt Simples
+        </button>
+
+        <p style="margin-top:14px;">
+            <strong>Prompt refinado:</strong>
+        </p>
+
+        <p id="prompt-refinado">
+            Atue como um especialista em Leitura Facilitada.
+            Reescreva o texto para uma pessoa idosa com baixa
+            escolaridade. Use linguagem simples, frases curtas,
+            explique termos médicos entre parênteses e organize
+            em tópicos com alertas visuais. Não invente informações
+            nem retire contraindicações importantes.
+        </p>
+
+        <button class="btn-mini"
+            onclick="copiarPromptBula('refinado')">
+            📋 Copiar Prompt Refinado
+        </button>
+    </div>
+
+    <!-- RESPONSABILIDADE ÉTICA -->
+    <div class="curiosidade-box" style="margin-top:18px;">
+        <strong>🛡️ Pensamento Crítico e Responsabilidade Ética</strong>
+
+        <p style="margin-top:8px;">
+            A Engenharia de Prompt pode tornar informações técnicas
+            mais acessíveis. Porém, em assuntos de saúde, a IA não
+            substitui a revisão humana. É importante verificar se
+            nenhuma informação essencial foi apagada ou alterada.
+        </p>
+
+        <p style="margin-top:8px;">
+            <strong>⚠️ Atenção:</strong> Esta ferramenta é educativa.
+            Não use textos simplificados para decidir como tomar
+            medicamentos. Consulte um médico ou farmacêutico.
+        </p>
+    </div>
+</div>
                 <!-- LABORATÓRIO INTERATIVO 1: EXPERIMENTO LOSARTANA POTÁSSICA -->
                 <div class="bula-comparativo">
                     <h4 style="color: var(--highlight); margin-bottom: 10px;">🔬 1. Experimento Prático: Bula da Losartana Potássica</h4>
